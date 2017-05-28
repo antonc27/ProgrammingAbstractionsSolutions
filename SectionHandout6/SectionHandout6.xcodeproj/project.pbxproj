@@ -1,0 +1,380 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE7587641ED70B7900E82C7B /* libcs106.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE7587581ED70B6600E82C7B /* libcs106.a */; };
+		EE8215AE1ED3826E00EB3428 /* MyRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE8215AC1ED3826E00EB3428 /* MyRectangle.cpp */; };
+		EE8215B11ED3970F00EB3428 /* Problem2_SimpleClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE8215AF1ED3970F00EB3428 /* Problem2_SimpleClass.cpp */; };
+		EE8215B41ED397CF00EB3428 /* Problem3_FunctionPointersAndTemplates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE8215B21ED397CF00EB3428 /* Problem3_FunctionPointersAndTemplates.cpp */; };
+		EEBCC5F31ED6364A004EE8FC /* Problem4_TemplatizedFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEBCC5F11ED6364A004EE8FC /* Problem4_TemplatizedFunctions.cpp */; };
+		EEBCC5F61ED63B9D004EE8FC /* Problem5_MoreTemplatizedFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEBCC5F41ED63B9D004EE8FC /* Problem5_MoreTemplatizedFunctions.cpp */; };
+		EED213A41E683CB400CAE44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A31E683CB400CAE44D /* Carbon.framework */; };
+		EED213A61E683CBD00CAE44D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A51E683CBD00CAE44D /* QuickTime.framework */; };
+		EEF63DC81E66333600914775 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF63DC71E66333600914775 /* main.cpp */; };
+		EEF63DCE1E66338F00914775 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF63DCD1E66338F00914775 /* Cocoa.framework */; };
+		EEF63DD01E66339C00914775 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF63DCF1E66339C00914775 /* libstdc++.6.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EE7587501ED70B6600E82C7B /* bst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bst.h; sourceTree = "<group>"; };
+		EE7587511ED70B6600E82C7B /* cmpfn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cmpfn.h; sourceTree = "<group>"; };
+		EE7587521ED70B6600E82C7B /* console.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = console.h; sourceTree = "<group>"; };
+		EE7587531ED70B6600E82C7B /* disallowcopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = disallowcopy.h; sourceTree = "<group>"; };
+		EE7587541ED70B6600E82C7B /* extgraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extgraph.h; sourceTree = "<group>"; };
+		EE7587551ED70B6600E82C7B /* genlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = genlib.h; sourceTree = "<group>"; };
+		EE7587561ED70B6600E82C7B /* graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graphics.h; sourceTree = "<group>"; };
+		EE7587571ED70B6600E82C7B /* grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grid.h; sourceTree = "<group>"; };
+		EE7587581ED70B6600E82C7B /* libcs106.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcs106.a; sourceTree = "<group>"; };
+		EE7587591ED70B6600E82C7B /* map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = map.h; sourceTree = "<group>"; };
+		EE75875A1ED70B6600E82C7B /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
+		EE75875B1ED70B6600E82C7B /* random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = random.h; sourceTree = "<group>"; };
+		EE75875C1ED70B6600E82C7B /* scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner.h; sourceTree = "<group>"; };
+		EE75875D1ED70B6600E82C7B /* set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = set.h; sourceTree = "<group>"; };
+		EE75875E1ED70B6600E82C7B /* simpio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simpio.h; sourceTree = "<group>"; };
+		EE75875F1ED70B6600E82C7B /* sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sound.h; sourceTree = "<group>"; };
+		EE7587601ED70B6600E82C7B /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		EE7587611ED70B6600E82C7B /* strutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strutils.h; sourceTree = "<group>"; };
+		EE7587621ED70B6600E82C7B /* vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
+		EE8215AC1ED3826E00EB3428 /* MyRectangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyRectangle.cpp; sourceTree = "<group>"; };
+		EE8215AD1ED3826E00EB3428 /* MyRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRectangle.h; sourceTree = "<group>"; };
+		EE8215AF1ED3970F00EB3428 /* Problem2_SimpleClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Problem2_SimpleClass.cpp; sourceTree = "<group>"; };
+		EE8215B01ED3970F00EB3428 /* Problem2_SimpleClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Problem2_SimpleClass.h; sourceTree = "<group>"; };
+		EE8215B21ED397CF00EB3428 /* Problem3_FunctionPointersAndTemplates.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Problem3_FunctionPointersAndTemplates.cpp; sourceTree = "<group>"; };
+		EE8215B31ED397CF00EB3428 /* Problem3_FunctionPointersAndTemplates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Problem3_FunctionPointersAndTemplates.h; sourceTree = "<group>"; };
+		EEBCC5F11ED6364A004EE8FC /* Problem4_TemplatizedFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Problem4_TemplatizedFunctions.cpp; sourceTree = "<group>"; };
+		EEBCC5F21ED6364A004EE8FC /* Problem4_TemplatizedFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Problem4_TemplatizedFunctions.h; sourceTree = "<group>"; };
+		EEBCC5F41ED63B9D004EE8FC /* Problem5_MoreTemplatizedFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Problem5_MoreTemplatizedFunctions.cpp; sourceTree = "<group>"; };
+		EEBCC5F51ED63B9D004EE8FC /* Problem5_MoreTemplatizedFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Problem5_MoreTemplatizedFunctions.h; sourceTree = "<group>"; };
+		EED213A31E683CB400CAE44D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		EED213A51E683CBD00CAE44D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
+		EEF63D9E1E6632D100914775 /* SectionHandout6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SectionHandout6.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEF63DAC1E6632D200914775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEF63DC71E66333600914775 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EEF63DCD1E66338F00914775 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		EEF63DCF1E66339C00914775 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EEF63D9B1E6632D100914775 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EED213A61E683CBD00CAE44D /* QuickTime.framework in Frameworks */,
+				EE7587641ED70B7900E82C7B /* libcs106.a in Frameworks */,
+				EED213A41E683CB400CAE44D /* Carbon.framework in Frameworks */,
+				EEF63DD01E66339C00914775 /* libstdc++.6.tbd in Frameworks */,
+				EEF63DCE1E66338F00914775 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE75874F1ED70B6600E82C7B /* cs106 */ = {
+			isa = PBXGroup;
+			children = (
+				EE7587501ED70B6600E82C7B /* bst.h */,
+				EE7587511ED70B6600E82C7B /* cmpfn.h */,
+				EE7587521ED70B6600E82C7B /* console.h */,
+				EE7587531ED70B6600E82C7B /* disallowcopy.h */,
+				EE7587541ED70B6600E82C7B /* extgraph.h */,
+				EE7587551ED70B6600E82C7B /* genlib.h */,
+				EE7587561ED70B6600E82C7B /* graphics.h */,
+				EE7587571ED70B6600E82C7B /* grid.h */,
+				EE7587581ED70B6600E82C7B /* libcs106.a */,
+				EE7587591ED70B6600E82C7B /* map.h */,
+				EE75875A1ED70B6600E82C7B /* queue.h */,
+				EE75875B1ED70B6600E82C7B /* random.h */,
+				EE75875C1ED70B6600E82C7B /* scanner.h */,
+				EE75875D1ED70B6600E82C7B /* set.h */,
+				EE75875E1ED70B6600E82C7B /* simpio.h */,
+				EE75875F1ED70B6600E82C7B /* sound.h */,
+				EE7587601ED70B6600E82C7B /* stack.h */,
+				EE7587611ED70B6600E82C7B /* strutils.h */,
+				EE7587621ED70B6600E82C7B /* vector.h */,
+			);
+			name = cs106;
+			path = ../cs106;
+			sourceTree = "<group>";
+		};
+		EEF63D951E6632D100914775 = {
+			isa = PBXGroup;
+			children = (
+				EE75874F1ED70B6600E82C7B /* cs106 */,
+				EEF63DA01E6632D100914775 /* SectionHandout6 */,
+				EEF63DCC1E66338F00914775 /* Frameworks */,
+				EEF63D9F1E6632D100914775 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EEF63D9F1E6632D100914775 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EEF63D9E1E6632D100914775 /* SectionHandout6.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EEF63DA01E6632D100914775 /* SectionHandout6 */ = {
+			isa = PBXGroup;
+			children = (
+				EE8215AD1ED3826E00EB3428 /* MyRectangle.h */,
+				EE8215AC1ED3826E00EB3428 /* MyRectangle.cpp */,
+				EE8215B01ED3970F00EB3428 /* Problem2_SimpleClass.h */,
+				EE8215AF1ED3970F00EB3428 /* Problem2_SimpleClass.cpp */,
+				EE8215B31ED397CF00EB3428 /* Problem3_FunctionPointersAndTemplates.h */,
+				EE8215B21ED397CF00EB3428 /* Problem3_FunctionPointersAndTemplates.cpp */,
+				EEBCC5F21ED6364A004EE8FC /* Problem4_TemplatizedFunctions.h */,
+				EEBCC5F11ED6364A004EE8FC /* Problem4_TemplatizedFunctions.cpp */,
+				EEBCC5F51ED63B9D004EE8FC /* Problem5_MoreTemplatizedFunctions.h */,
+				EEBCC5F41ED63B9D004EE8FC /* Problem5_MoreTemplatizedFunctions.cpp */,
+				EEF63DC71E66333600914775 /* main.cpp */,
+				EEF63DAC1E6632D200914775 /* Info.plist */,
+			);
+			path = SectionHandout6;
+			sourceTree = "<group>";
+		};
+		EEF63DCC1E66338F00914775 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EED213A51E683CBD00CAE44D /* QuickTime.framework */,
+				EED213A31E683CB400CAE44D /* Carbon.framework */,
+				EEF63DCF1E66339C00914775 /* libstdc++.6.tbd */,
+				EEF63DCD1E66338F00914775 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EEF63D9D1E6632D100914775 /* SectionHandout6 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEF63DAF1E6632D200914775 /* Build configuration list for PBXNativeTarget "SectionHandout6" */;
+			buildPhases = (
+				EEF63D9A1E6632D100914775 /* Sources */,
+				EEF63D9B1E6632D100914775 /* Frameworks */,
+				EEF63D9C1E6632D100914775 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SectionHandout6;
+			productName = SectionHandout6;
+			productReference = EEF63D9E1E6632D100914775 /* SectionHandout6.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EEF63D961E6632D100914775 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = AC27;
+				TargetAttributes = {
+					EEF63D9D1E6632D100914775 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = EEF63D991E6632D100914775 /* Build configuration list for PBXProject "SectionHandout6" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EEF63D951E6632D100914775;
+			productRefGroup = EEF63D9F1E6632D100914775 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EEF63D9D1E6632D100914775 /* SectionHandout6 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EEF63D9C1E6632D100914775 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EEF63D9A1E6632D100914775 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEF63DC81E66333600914775 /* main.cpp in Sources */,
+				EE8215B41ED397CF00EB3428 /* Problem3_FunctionPointersAndTemplates.cpp in Sources */,
+				EEBCC5F61ED63B9D004EE8FC /* Problem5_MoreTemplatizedFunctions.cpp in Sources */,
+				EEBCC5F31ED6364A004EE8FC /* Problem4_TemplatizedFunctions.cpp in Sources */,
+				EE8215B11ED3970F00EB3428 /* Problem2_SimpleClass.cpp in Sources */,
+				EE8215AE1ED3826E00EB3428 /* MyRectangle.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		EEF63DAD1E6632D200914775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EEF63DAE1E6632D200914775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EEF63DB01E6632D200914775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libstdc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SectionHandout6/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../cs106",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AC27.SectionHandout6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EEF63DB11E6632D200914775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libstdc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SectionHandout6/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../cs106",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.AC27.SectionHandout6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EEF63D991E6632D100914775 /* Build configuration list for PBXProject "SectionHandout6" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEF63DAD1E6632D200914775 /* Debug */,
+				EEF63DAE1E6632D200914775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEF63DAF1E6632D200914775 /* Build configuration list for PBXNativeTarget "SectionHandout6" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEF63DB01E6632D200914775 /* Debug */,
+				EEF63DB11E6632D200914775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EEF63D961E6632D100914775 /* Project object */;
+}
