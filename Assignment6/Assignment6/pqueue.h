@@ -11,7 +11,6 @@
 #define _pqueue_h
 
 #include "genlib.h"
-#include "vector.h"
 #include "disallowcopy.h"
 
 /*
@@ -133,7 +132,7 @@ class PQueue
 
   	/* This is the representation for the unsorted vector.
   	 * You will need to update this as you change representations. */
-	Vector<int> entries;
+    
 
 };
 

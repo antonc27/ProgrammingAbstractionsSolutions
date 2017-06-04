@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE6980361EE4C82A0076502C /* pqchunklist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE6980351EE4C82A0076502C /* pqchunklist.cpp */; };
 		EED213A41E683CB400CAE44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A31E683CB400CAE44D /* Carbon.framework */; };
 		EED213A61E683CBD00CAE44D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A51E683CBD00CAE44D /* QuickTime.framework */; };
 		EEF5439E1EDE2E1C0060510A /* libcs106.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF543931EDE2E1C0060510A /* libcs106.a */; };
 		EEF543A81EDE2E4A0060510A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF5439F1EDE2E4A0060510A /* main.cpp */; };
 		EEF543A91EDE2E4A0060510A /* performance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF543A01EDE2E4A0060510A /* performance.cpp */; };
 		EEF543AB1EDE2E4A0060510A /* pqueuetest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF543A41EDE2E4A0060510A /* pqueuetest.cpp */; };
-		EEF543AC1EDE2E4A0060510A /* pqvector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF543A61EDE2E4A0060510A /* pqvector.cpp */; };
 		EEF63DCE1E66338F00914775 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF63DCD1E66338F00914775 /* Cocoa.framework */; };
 		EEF63DD01E66339C00914775 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF63DCF1E66339C00914775 /* libstdc++.6.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE6980351EE4C82A0076502C /* pqchunklist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pqchunklist.cpp; sourceTree = "<group>"; };
 		EED213A31E683CB400CAE44D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		EED213A51E683CBD00CAE44D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		EEF5438B1EDE2E1C0060510A /* bst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bst.h; sourceTree = "<group>"; };
@@ -46,7 +47,6 @@
 		EEF543A31EDE2E4A0060510A /* pqueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pqueue.h; sourceTree = "<group>"; };
 		EEF543A41EDE2E4A0060510A /* pqueuetest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pqueuetest.cpp; sourceTree = "<group>"; };
 		EEF543A51EDE2E4A0060510A /* pqueuetest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pqueuetest.h; sourceTree = "<group>"; };
-		EEF543A61EDE2E4A0060510A /* pqvector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pqvector.cpp; sourceTree = "<group>"; };
 		EEF543A71EDE2E4A0060510A /* vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
 		EEF63D9E1E6632D100914775 /* Assignment6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF63DAC1E6632D200914775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 				EEF543A31EDE2E4A0060510A /* pqueue.h */,
 				EEF543A41EDE2E4A0060510A /* pqueuetest.cpp */,
 				EEF543A51EDE2E4A0060510A /* pqueuetest.h */,
-				EEF543A61EDE2E4A0060510A /* pqvector.cpp */,
+				EE6980351EE4C82A0076502C /* pqchunklist.cpp */,
 				EEF543A71EDE2E4A0060510A /* vector.h */,
 				EEF63DAC1E6632D200914775 /* Info.plist */,
 			);
@@ -210,9 +210,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEF543AC1EDE2E4A0060510A /* pqvector.cpp in Sources */,
 				EEF543AB1EDE2E4A0060510A /* pqueuetest.cpp in Sources */,
 				EEF543A91EDE2E4A0060510A /* performance.cpp in Sources */,
+				EE6980361EE4C82A0076502C /* pqchunklist.cpp in Sources */,
 				EEF543A81EDE2E4A0060510A /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
