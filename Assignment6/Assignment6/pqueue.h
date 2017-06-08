@@ -132,8 +132,15 @@ class PQueue
 
   	/* This is the representation for the unsorted vector.
   	 * You will need to update this as you change representations. */
+    struct Chunk {
+        int *values;
+        int numUsed;
+        Chunk *next;
+    };
+    Chunk *head;
     
-
+    Chunk *newChunk();
+    void insertToChunk(int newValue, Chunk *&chunkToInsert);
 };
 
 
