@@ -2,27 +2,27 @@
 
 N = 10000
 
-Memory Used N | 40 KB | 80 KB |  |  |
-Memory Used 2N | 81 KB | 160 KB |  |  |
-Memory Used 5N | 327 KB | 400 KB |  |  |
-Enqueue N | 0.278 usecs | 25.625 usecs |  |  |
-Enqueue 2N | 0.453 usecs | 59.388 usecs |  |  |
-Enqueue 5N | 0.168 usecs | 194.852 usecs |  |  |
-Enqueue Big-O | 1 |  |  |  |
-DequeueMax N | 215.161 usecs | 0.245 usecs |  |  |
-DequeueMax 2N | 373.644 usecs | 0.363 usecs |  |  |
-DequeueMax 5N | 866.765 usecs | 0.256 usecs |  |  |
-DequeueMax Big-O | N |  |  |  |
-PQSort N (random) | 890.935 msecs | 202.326 msecs |  |  |
-PQSort 2N | 3386.15 msecs | 812.153 msecs |  |  |
-PQSort 5N | 21400 msecs | 7671.93 msecs |  |  |
-PQSort Big-O | N^2 | N^2 |  |  |
-PQSort N (sorted) | 1424.44 msecs | 3.501 msecs |  |  |
-PSort 2N | 5597.4 msecs | 6.189 msecs |  |  |
-PQSort 5N | 34576.5 msecs | 12.788 msecs |  |  |
-PQSort Big-O | N^2 | N |  |  |
-PQSort N (reverse-sorted) | 924.779 msecs | 256.362 msecs |  |  |
-PSort 2N | 3657.18 msecs | 901.13 msecs |  |  |
-PQSort 5N | 22408.6 msecs | 5378.65 msecs |  |  |
-PQSort Big-O | N^2 | N^2 |  |  |
+Memory Used N | 40 KB | 80 KB | 74 KB |  |
+Memory Used 2N | 81 KB | 160 KB | 148 KB |  |
+Memory Used 5N | 327 KB | 400 KB | 371 KB |  |
+Enqueue N | 0.278 usecs | 25.625 usecs | 14.387 usecs |  |
+Enqueue 2N | 0.453 usecs | 59.388 usecs | 18.089 usecs |  |
+Enqueue 5N | 0.168 usecs | 194.852 usecs | 58.627 usecs |  |
+Enqueue Big-O | 1 | N | N |  |
+DequeueMax N | 215.161 usecs | 0.245 usecs | 0.223 usecs |  |
+DequeueMax 2N | 373.644 usecs | 0.363 usecs | 0.183 usecs |  |
+DequeueMax 5N | 866.765 usecs | 0.256 usecs |  | 0.211 usecs |
+DequeueMax Big-O | N | 1 | 1 |  |
+PQSort N (random) | 890.935 msecs | 202.326 msecs | 67.829 msecs |  |
+PQSort 2N | 3386.15 msecs | 812.153 msecs | 283.507 msecs |  |
+PQSort 5N | 21400 msecs | 7671.93 msecs | 2128.82 msecs |  |
+PQSort Big-O | N^2 | N^2 | N^2 |  |
+PQSort N (sorted) | 1424.44 msecs | 3.501 msecs | 4.327 msecs |  |
+PSort 2N | 5597.4 msecs | 6.189 msecs | 6.469 msecs |  |
+PQSort 5N | 34576.5 msecs | 12.788 msecs | 20.597 msecs |  |
+PQSort Big-O | N^2 | N | N |  |
+PQSort N (reverse-sorted) | 924.779 msecs | 256.362 msecs | 134.877 msecs |  |
+PSort 2N | 3657.18 msecs | 901.13 msecs | 456.275 msecs |  |
+PQSort 5N | 22408.6 msecs | 5378.65 msecs | 2553.6 msecs |  |
+PQSort Big-O | N^2 | N^2 | N^2 |  |
                                                                                                                   
