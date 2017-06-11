@@ -134,6 +134,11 @@ class PQueue
   	 * You will need to update this as you change representations. */
     int *elements;
     int numAllocated, numUsed;
+    
+    void enlargeCapacity();
+    void bubbleUp();
+    void heapify();
+    void swap(int i, int j);
 };
 
 
