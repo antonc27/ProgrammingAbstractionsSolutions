@@ -6,7 +6,15 @@
 /* Implementation notes: PQueue class
  * ----------------------------------
  * The private section for the pqchunklist looks like this:
-
+ struct Chunk {
+ int *values;
+ int numUsed;
+ Chunk *next;
+ };
+ Chunk *head;
+ 
+ Chunk *newChunk();
+ void insertToChunk(int newValue, Chunk *&chunkToInsert);
  */
 
 const int MaxElemsPerBlock = 5;
