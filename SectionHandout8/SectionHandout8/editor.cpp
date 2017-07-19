@@ -37,7 +37,7 @@ void ExecuteCommand(EditorBuffer & buffer, string line) {
         case 'B': buffer.moveCursorBackward(); break;
         case 'J': buffer.moveCursorToStart(); break;
         case 'E': buffer.moveCursorToEnd(); break;
-        case 'W': buffer.moveCursorToWordBegin(); break;
+//        case 'W': buffer.moveCursorToWordBegin(); break;
         case 'Q': exit(0);
         default: cout << "Illegal command" << endl; break;
     }

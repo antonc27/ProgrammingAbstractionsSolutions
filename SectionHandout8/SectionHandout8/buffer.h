@@ -5,6 +5,9 @@
  */
 #ifndef _buffer_h
 #define _buffer_h
+
+#include "stack.h"
+
 /*
  * Class: EditorBuffer
  * -------------
@@ -52,7 +55,7 @@ public:
     void moveCursorToStart();
     void moveCursorToEnd();
     
-    void moveCursorToWordBegin();
+//    void moveCursorToWordBegin();
     
     /*
      * Method: insertCharacter
@@ -82,11 +85,15 @@ public:
      */
     void display();
 private:
+    /* arraybuf internals
     int capacity;
     char *array;
     int length;
     int cursor;
     
     void expandCapacity();
+     */
+    Stack<char> before;
+    Stack<char> after;
 };
 #endif

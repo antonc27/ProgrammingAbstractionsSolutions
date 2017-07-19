@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		EE8BBCA41F1EAFD900338651 /* libcs106.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8BBC991F1EAFD900338651 /* libcs106.a */; };
 		EE8BBCA71F1EB29B00338651 /* editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE8BBCA61F1EB29B00338651 /* editor.cpp */; };
-		EE8BBCAA1F1EB58C00338651 /* arraybuf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE8BBCA91F1EB58C00338651 /* arraybuf.cpp */; };
+		EEA2AA2F1F200D9400192DA4 /* stackbuf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA2AA2E1F200D9400192DA4 /* stackbuf.cpp */; };
 		EED213A41E683CB400CAE44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A31E683CB400CAE44D /* Carbon.framework */; };
 		EED213A61E683CBD00CAE44D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A51E683CBD00CAE44D /* QuickTime.framework */; };
 		EEF63DC81E66333600914775 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF63DC71E66333600914775 /* main.cpp */; };
@@ -40,7 +40,7 @@
 		EE8BBCA51F1EB20A00338651 /* buffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
 		EE8BBCA61F1EB29B00338651 /* editor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = editor.cpp; sourceTree = "<group>"; };
 		EE8BBCA81F1EB44300338651 /* editor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = editor.h; sourceTree = "<group>"; };
-		EE8BBCA91F1EB58C00338651 /* arraybuf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = arraybuf.cpp; sourceTree = "<group>"; };
+		EEA2AA2E1F200D9400192DA4 /* stackbuf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stackbuf.cpp; sourceTree = "<group>"; };
 		EED213A31E683CB400CAE44D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		EED213A51E683CBD00CAE44D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		EEF63D9E1E6632D100914775 /* SectionHandout8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SectionHandout8.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,7 +118,7 @@
 				EE8BBCA81F1EB44300338651 /* editor.h */,
 				EE8BBCA61F1EB29B00338651 /* editor.cpp */,
 				EE8BBCA51F1EB20A00338651 /* buffer.h */,
-				EE8BBCA91F1EB58C00338651 /* arraybuf.cpp */,
+				EEA2AA2E1F200D9400192DA4 /* stackbuf.cpp */,
 				EEF63DAC1E6632D200914775 /* Info.plist */,
 			);
 			path = SectionHandout8;
@@ -203,7 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE8BBCAA1F1EB58C00338651 /* arraybuf.cpp in Sources */,
+				EEA2AA2F1F200D9400192DA4 /* stackbuf.cpp in Sources */,
 				EE8BBCA71F1EB29B00338651 /* editor.cpp in Sources */,
 				EEF63DC81E66333600914775 /* main.cpp in Sources */,
 			);
