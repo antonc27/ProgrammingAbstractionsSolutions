@@ -55,6 +55,16 @@ void EditorBuffer::moveCursorToStart() {
 void EditorBuffer::moveCursorToEnd() {
     cursor = length;
 }
+
+void EditorBuffer::moveCursorToWordBegin() {
+    if (cursor > 0 && isspace(array[cursor])) {
+        moveCursorBackward();
+    }
+    while (cursor > 0 && !isspace(array[cursor])) {
+        cursor--;
+    }
+}
+
 /*
  * Implementation notes: insertCharacter and deleteCharacter
  * ---------------------------------------------------------

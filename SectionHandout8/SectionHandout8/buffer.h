@@ -51,6 +51,9 @@ public:
      */
     void moveCursorToStart();
     void moveCursorToEnd();
+    
+    void moveCursorToWordBegin();
+    
     /*
      * Method: insertCharacter
      * Usage: buffer.insertCharacter(ch);
