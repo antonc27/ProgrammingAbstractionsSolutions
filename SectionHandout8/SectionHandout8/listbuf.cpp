@@ -79,6 +79,21 @@ void EditorBuffer::moveCursorToEnd() {
         moveCursorForward();
     }
 }
+
+void EditorBuffer::moveCursorToWordBegin() {
+    cellT *previousSpace = start;
+    cellT *cp = start;
+    if (cursor != start) {
+        while (cp != cursor) {
+            if (isspace(cp->ch)) {
+                previousSpace = cp;
+            }
+            cp = cp->link;
+        }
+        cursor = previousSpace;
+    }
+}
+
 /*
  * Implementation notes: insertCharacter
  * -------------------------------------
