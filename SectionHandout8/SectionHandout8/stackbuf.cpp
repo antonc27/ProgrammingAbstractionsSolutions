@@ -55,6 +55,16 @@ void EditorBuffer::moveCursorToEnd() {
         before.push(after.pop());
     }
 }
+
+void EditorBuffer::moveCursorToWordBegin() {
+    if (!before.isEmpty() && isspace(before.peek())) {
+        moveCursorBackward();
+    }
+    while (!before.isEmpty() && !isspace(before.peek())) {
+        moveCursorBackward();
+    }
+}
+
 /*
  * Implementation notes: insertCharacter and deleteCharacter
  * ---------------------------------------------------------

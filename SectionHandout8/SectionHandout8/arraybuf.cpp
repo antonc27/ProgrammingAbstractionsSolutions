@@ -61,7 +61,7 @@ void EditorBuffer::moveCursorToWordBegin() {
         moveCursorBackward();
     }
     while (cursor > 0 && !isspace(array[cursor])) {
-        cursor--;
+        moveCursorBackward();
     }
 }
 

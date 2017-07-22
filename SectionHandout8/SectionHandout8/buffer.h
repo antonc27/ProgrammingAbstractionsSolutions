@@ -55,7 +55,7 @@ public:
     void moveCursorToStart();
     void moveCursorToEnd();
     
-//    void moveCursorToWordBegin();
+    void moveCursorToWordBegin();
     
     /*
      * Method: insertCharacter
