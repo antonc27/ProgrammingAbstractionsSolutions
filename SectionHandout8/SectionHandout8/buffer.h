@@ -55,7 +55,7 @@ public:
     void moveCursorToStart();
     void moveCursorToEnd();
     
-    void moveCursorToWordBegin();
+//    void moveCursorToWordBegin();
     
     /*
      * Method: insertCharacter
@@ -93,7 +93,15 @@ private:
     
     void expandCapacity();
      */
+    /* stackbuf internals
     Stack<char> before;
     Stack<char> after;
+     */
+    struct cellT {
+        char ch;
+        cellT *link;
+    };
+    cellT *start;
+    cellT *cursor;
 };
 #endif
