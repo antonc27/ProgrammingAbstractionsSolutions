@@ -10,23 +10,20 @@
 #include "tree.h"
 
 bool IsLeaf(nodeT *node) {
-    return node != NULL && node->left == NULL && node->right == NULL;
+    return node->left == NULL && node->right == NULL;
 }
 
 void TrimLeaves(nodeT * & tree) {
     if (tree == NULL) {
         return;
     }
-    if (IsLeaf(tree->left)) {
-        delete tree->left;
-        tree->left = NULL;
+    if (IsLeaf(tree)) {
+        delete tree;
+        tree = NULL;
+    } else {
+        TrimLeaves(tree->left);
+        TrimLeaves(tree->right);
     }
-    if (IsLeaf(tree->right)) {
-        delete tree->right;
-        tree->right = NULL;
-    }
-    TrimLeaves(tree->left);
-    TrimLeaves(tree->right);
 }
 
 int Problem_4_TrimLeaves_main() {
