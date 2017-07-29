@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE2766D01F2D002A00A63E58 /* Problem_5_BalancedTrees.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE2766CE1F2D002A00A63E58 /* Problem_5_BalancedTrees.cpp */; };
 		EE8BBCA41F1EAFD900338651 /* libcs106.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8BBC991F1EAFD900338651 /* libcs106.a */; };
 		EE8BBCA71F1EB29B00338651 /* editor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE8BBCA61F1EB29B00338651 /* editor.cpp */; };
-		EEBED7431F2CF98400706AE6 /* Problem_4_TrimLeaves.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEBED7411F2CF98400706AE6 /* Problem_4_TrimLeaves.cpp */; };
 		EED213A41E683CB400CAE44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A31E683CB400CAE44D /* Carbon.framework */; };
 		EED213A61E683CBD00CAE44D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A51E683CBD00CAE44D /* QuickTime.framework */; };
 		EEF63DC81E66333600914775 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF63DC71E66333600914775 /* main.cpp */; };
@@ -19,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE2766CE1F2D002A00A63E58 /* Problem_5_BalancedTrees.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Problem_5_BalancedTrees.cpp; sourceTree = "<group>"; };
+		EE2766CF1F2D002A00A63E58 /* Problem_5_BalancedTrees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Problem_5_BalancedTrees.h; sourceTree = "<group>"; };
 		EE8BBC911F1EAFD900338651 /* bst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bst.h; sourceTree = "<group>"; };
 		EE8BBC921F1EAFD900338651 /* cmpfn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cmpfn.h; sourceTree = "<group>"; };
 		EE8BBC931F1EAFD900338651 /* console.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = console.h; sourceTree = "<group>"; };
@@ -72,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE2766D11F2D003500A63E58 /* Problem_5_BalancedTrees */ = {
+			isa = PBXGroup;
+			children = (
+				EE2766CF1F2D002A00A63E58 /* Problem_5_BalancedTrees.h */,
+				EE2766CE1F2D002A00A63E58 /* Problem_5_BalancedTrees.cpp */,
+			);
+			name = Problem_5_BalancedTrees;
+			sourceTree = "<group>";
+		};
 		EE8BBC901F1EAFD900338651 /* cs106 */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +165,7 @@
 				EEBED73B1F2CE24200706AE6 /* Problem_1_ExtendingEditorBuffer */,
 				EEBED73C1F2CE2AB00706AE6 /* Problem_3_TreeEqual */,
 				EEBED7441F2CF98C00706AE6 /* Problem_4_TrimLeaves */,
+				EE2766D11F2D003500A63E58 /* Problem_5_BalancedTrees */,
 				EEF63DAC1E6632D200914775 /* Info.plist */,
 			);
 			path = SectionHandout8;
@@ -239,9 +251,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEFEEC4A1F23D1C3001A13D1 /* listbuf.cpp in Sources */,
-				EEBED7431F2CF98400706AE6 /* Problem_4_TrimLeaves.cpp in Sources */,
 				EE8BBCA71F1EB29B00338651 /* editor.cpp in Sources */,
 				EEF63DC81E66333600914775 /* main.cpp in Sources */,
+				EE2766D01F2D002A00A63E58 /* Problem_5_BalancedTrees.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
