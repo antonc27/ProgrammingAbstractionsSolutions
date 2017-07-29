@@ -93,6 +93,17 @@
 			path = ../../cs106;
 			sourceTree = "<group>";
 		};
+		EEBED73B1F2CE24200706AE6 /* Problem_1_ExtendingEditorBuffer */ = {
+			isa = PBXGroup;
+			children = (
+				EE8BBCA81F1EB44300338651 /* editor.h */,
+				EE8BBCA61F1EB29B00338651 /* editor.cpp */,
+				EE8BBCA51F1EB20A00338651 /* buffer.h */,
+				EEFEEC491F23D1C3001A13D1 /* listbuf.cpp */,
+			);
+			name = Problem_1_ExtendingEditorBuffer;
+			sourceTree = "<group>";
+		};
 		EEF63D951E6632D100914775 = {
 			isa = PBXGroup;
 			children = (
@@ -115,10 +126,7 @@
 			children = (
 				EE8BBC901F1EAFD900338651 /* cs106 */,
 				EEF63DC71E66333600914775 /* main.cpp */,
-				EE8BBCA81F1EB44300338651 /* editor.h */,
-				EE8BBCA61F1EB29B00338651 /* editor.cpp */,
-				EE8BBCA51F1EB20A00338651 /* buffer.h */,
-				EEFEEC491F23D1C3001A13D1 /* listbuf.cpp */,
+				EEBED73B1F2CE24200706AE6 /* Problem_1_ExtendingEditorBuffer */,
 				EEF63DAC1E6632D200914775 /* Info.plist */,
 			);
 			path = SectionHandout8;
