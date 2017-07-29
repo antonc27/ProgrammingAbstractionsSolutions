@@ -2,6 +2,7 @@
 #define tree_h
 
 #include "genlib.h"
+#include <iostream>
 
 struct nodeT
 {
@@ -22,6 +23,14 @@ void InsertNode(nodeT * & t, string key) {
         InsertNode(t->left, key);
     } else {
         InsertNode(t->right, key);
+    }
+}
+
+void DisplayTree(nodeT *t) {
+    if (t != NULL) {
+        DisplayTree(t->left);
+        cout << t->key << endl;
+        DisplayTree(t->right);
     }
 }
 
