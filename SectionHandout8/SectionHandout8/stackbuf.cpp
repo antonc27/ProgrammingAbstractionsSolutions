@@ -57,7 +57,7 @@ void EditorBuffer::moveCursorToEnd() {
 }
 
 void EditorBuffer::moveCursorToWordBegin() {
-    if (!before.isEmpty() && isspace(before.peek())) {
+    while (!before.isEmpty() && isspace(before.peek())) {
         moveCursorBackward();
     }
     while (!before.isEmpty() && !isspace(before.peek())) {

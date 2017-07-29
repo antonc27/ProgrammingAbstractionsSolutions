@@ -57,10 +57,10 @@ void EditorBuffer::moveCursorToEnd() {
 }
 
 void EditorBuffer::moveCursorToWordBegin() {
-    if (cursor > 0 && isspace(array[cursor])) {
+    while (cursor - 1 >= 0 && isspace(array[cursor - 1])) {
         moveCursorBackward();
     }
-    while (cursor > 0 && !isspace(array[cursor])) {
+    while (cursor - 1 >= 0 && !isspace(array[cursor - 1])) {
         moveCursorBackward();
     }
 }

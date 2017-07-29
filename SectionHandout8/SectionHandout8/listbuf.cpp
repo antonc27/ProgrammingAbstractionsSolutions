@@ -81,16 +81,17 @@ void EditorBuffer::moveCursorToEnd() {
 }
 
 void EditorBuffer::moveCursorToWordBegin() {
-    cellT *previousSpace = start;
+    cellT *wordStart = start;
     cellT *cp = start;
     if (cursor != start) {
         while (cp != cursor) {
-            if (isspace(cp->ch)) {
-                previousSpace = cp;
+            cellT *next = cp->link;
+            if (isspace(cp->ch) && next != NULL && !isspace(next->ch)) {
+                wordStart = cp;
             }
             cp = cp->link;
         }
-        cursor = previousSpace;
+        cursor = wordStart;
     }
 }
 
