@@ -57,7 +57,7 @@ void PQueuePerformance()
 void RunPerformanceTrial(int size)
 {
 	Randomize();
-	PQueue pq;
+	PQueue<int> pq;
 	cout << endl << "---- Performance for " << size << "-element pqueue (" << pq.implementationName() << ")" << " -----" << endl << endl;
 	RunEnqueueDequeueTrial(size);
 	RunSortTrial(size);
@@ -80,7 +80,7 @@ void RunPerformanceTrial(int size)
  */
 void RunEnqueueDequeueTrial(int size)
 {
-	PQueue pq;
+	PQueue<int> pq;
 	
 	for (int i = 0; i < size; i++)
 		pq.enqueue(RandomInteger(1,size));
@@ -144,7 +144,7 @@ void RunSortTrial(int size)
  */
 void RunMemoryTrial(int size)
 {
-    PQueue pq;
+    PQueue<int> pq;
     cout << endl << "Running memory trial on " << size << "-element pqueue" << endl;
     for (int i = 0; i < size; i++)
 		pq.enqueue(RandomInteger(1, size));

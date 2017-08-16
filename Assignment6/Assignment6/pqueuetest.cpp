@@ -26,7 +26,7 @@ bool ArrayIsSorted(int array[], int size);
  */
 void BasicPQueueTest()
 {
-	PQueue pq;
+	PQueue<int> pq;
 	
 	cout << boolalpha;	// configure stream to print booleans as true/false instead of 1/0
 	cout << endl << "-----------   Testing Basic PQueue functions -----------" << endl;
@@ -66,7 +66,7 @@ void BasicPQueueTest()
  */
 void MorePQueueTest()
 {
-	PQueue pq;
+	PQueue<int> pq;
 	
 	cout << boolalpha;
 	cout << endl << "-----------   More pqueue testing functions -----------" << endl;
@@ -149,7 +149,7 @@ void PQueueSortTest()
 
 void PQSort(int array[], int nElems)
 {
-	PQueue pq;
+	PQueue<int> pq;
 	for (int i = 0; i < nElems; i++)	
 		pq.enqueue(array[i]);
 	for (int i = nElems-1; i >= 0; i--)

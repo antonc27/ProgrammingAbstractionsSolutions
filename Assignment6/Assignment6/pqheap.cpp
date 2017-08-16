@@ -1,8 +1,3 @@
-#include "pqueue.h"
-#include "genlib.h"
-#include <iostream>
-
-
 /* Implementation notes: PQueue class
  * ----------------------------------
  * The private section for the pqheap looks like this:
@@ -13,19 +8,23 @@
  * ---------------------------------
  *
  */
-PQueue::PQueue()
+template <typename ElemType>
+PQueue<ElemType>::PQueue(int (cmp)(ElemType, ElemType))
 {
-    elements = new int[2];
+    cmpFn = cmp;
+    elements = new ElemType[2];
     numAllocated = 2;
     numUsed = 0;
 }
 
-PQueue::~PQueue()
+template <typename ElemType>
+PQueue<ElemType>::~PQueue()
 {
     delete[] elements;
 }
 
-bool PQueue::isEmpty()
+template <typename ElemType>
+bool PQueue<ElemType>::isEmpty()
 {
     return (size() == 0);
 }
@@ -34,7 +33,8 @@ bool PQueue::isEmpty()
  * --------------------------
  *
  */
-int PQueue::size()
+template <typename ElemType>
+int PQueue<ElemType>::size()
 {
     return numUsed;
 }
@@ -44,7 +44,8 @@ int PQueue::size()
  * -----------------------------
  *
  */
-void PQueue::enqueue(int newValue)
+template <typename ElemType>
+void PQueue<ElemType>::enqueue(ElemType newValue)
 {
     if (numAllocated == numUsed)
         enlargeCapacity();
@@ -58,12 +59,13 @@ void PQueue::enqueue(int newValue)
  * --------------------------------
  *
  */
-int PQueue::dequeueMax()
+template <typename ElemType>
+ElemType PQueue<ElemType>::dequeueMax()
 {
     if (isEmpty())
         Error("Tried to dequeue max from an empty pqueue!");
     
-    int max = elements[0];
+    ElemType max = elements[0];
     swap(0, numUsed - 1);
     numUsed--;
     heapify();
@@ -75,15 +77,16 @@ int PQueue::dequeueMax()
  * -------------------------------
  *
  */
-int PQueue::bytesUsed()
+template <typename ElemType>
+int PQueue<ElemType>::bytesUsed()
 {
-    return sizeof(*this) + sizeof(int)*numAllocated;
+    return sizeof(*this) + sizeof(ElemType)*numAllocated;
 }
 	
-
-string PQueue::implementationName()
+template <typename ElemType>
+string PQueue<ElemType>::implementationName()
 {
-	return "heap";
+	return "templetazed heap";
 }
 
 /*
@@ -91,41 +94,45 @@ string PQueue::implementationName()
  * ----------------------------------------
  *
  */
-void PQueue::printDebuggingInfo()
+template <typename ElemType>
+void PQueue<ElemType>::printDebuggingInfo()
 {
-    cout << "------------------ START DEBUG INFO ------------------" << endl;
-    int i, sum;
-    for (sum = 0, i = 1; sum < numUsed; sum += i, i *= 2) {
-        for (int j = sum; j < sum + i && j < numUsed; j++) {
-            cout << elements[j] << " ";
-        }
-        cout << endl;
-    }
-    cout << "------------------ END DEBUG INFO ------------------" << endl;
+//    cout << "------------------ START DEBUG INFO ------------------" << endl;
+//    int i, sum;
+//    for (sum = 0, i = 1; sum < numUsed; sum += i, i *= 2) {
+//        for (int j = sum; j < sum + i && j < numUsed; j++) {
+//            cout << elements[j] << " ";
+//        }
+//        cout << endl;
+//    }
+//    cout << "------------------ END DEBUG INFO ------------------" << endl;
 }
 
-void PQueue::enlargeCapacity()
+template <typename ElemType>
+void PQueue<ElemType>::enlargeCapacity()
 {
     numAllocated *= 2;
-    int *newArray = new int[numAllocated];
+    ElemType *newArray = new ElemType[numAllocated];
     for (int i = 0; i < numUsed; i++)
         newArray[i] = elements[i];
     delete[] elements;
     elements = newArray;
 }
 
-void PQueue::bubbleUp()
+template <typename ElemType>
+void PQueue<ElemType>::bubbleUp()
 {
     int childIdx = numUsed - 1;
     int parentIdx = (childIdx - 1) / 2;
-    while (childIdx > 0 && childIdx != parentIdx && elements[childIdx] > elements[parentIdx]) {
+    while (childIdx > 0 && childIdx != parentIdx && compareIfLeftGreaterThenRight(childIdx, parentIdx)) {
         swap(childIdx, parentIdx);
         childIdx = parentIdx;
         parentIdx = (childIdx - 1) / 2;
     }
 }
 
-void PQueue::heapify()
+template <typename ElemType>
+void PQueue<ElemType>::heapify()
 {
     int parentIdx = 0;
     int leftChildIdx = 2*parentIdx + 1;
@@ -135,15 +142,17 @@ void PQueue::heapify()
             break;
         }
         if (rightChildIdx >= numUsed) {
-            if (elements[leftChildIdx] > elements[parentIdx]) {
+            if (compareIfLeftGreaterThenRight(leftChildIdx, parentIdx)) {
                 swap(leftChildIdx, parentIdx);
                 parentIdx = leftChildIdx;
             }
             break;
         }
         
-        if (max(elements[leftChildIdx], elements[rightChildIdx]) > elements[parentIdx]) {
-            if (elements[leftChildIdx] > elements[rightChildIdx]) {
+        bool isLeftChildGreaterThenParent = compareIfLeftGreaterThenRight(leftChildIdx, parentIdx);
+        bool isRightChildGreaterThenParent = compareIfLeftGreaterThenRight(rightChildIdx, parentIdx);
+        if (isLeftChildGreaterThenParent || isRightChildGreaterThenParent) {
+            if (compareIfLeftGreaterThenRight(leftChildIdx, rightChildIdx)) {
                 swap(leftChildIdx, parentIdx);
                 parentIdx = leftChildIdx;
             } else {
@@ -159,9 +168,16 @@ void PQueue::heapify()
     }
 }
 
-void PQueue::swap(int i, int j)
+template <typename ElemType>
+bool PQueue<ElemType>::compareIfLeftGreaterThenRight(int left, int right)
 {
-    int tmp = elements[i];
+    return cmpFn(elements[left], elements[right]) > 0;
+}
+
+template <typename ElemType>
+void PQueue<ElemType>::swap(int i, int j)
+{
+    ElemType tmp = elements[i];
     elements[i] = elements[j];
     elements[j] = tmp;
 }

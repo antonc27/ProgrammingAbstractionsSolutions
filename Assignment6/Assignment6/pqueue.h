@@ -12,6 +12,7 @@
 
 #include "genlib.h"
 #include "disallowcopy.h"
+#include "cmpfn.h"
 
 /*
  * Class: PQueue
@@ -19,21 +20,20 @@
  * This is the class for a priority queue.  This is not
  * simple FIFO queue, it is a priority queue, where elements are
  * retrieved in order of priority, not just by longevity in queue.
- * The elements are integers and the integer is assumed to represent 
- * the priority (larger integer is higher priority).
  */
+template <typename ElemType>
 class PQueue 
 {
   public:
 
 	/*
 	 * Constructor: PQueue
-	 * Usage: PQueue pq;
-	 *        PQueue *ppq = new PQueue;
+	 * Usage: PQueue<int> pq;
+	 *        PQueue<double> *ppq = new PQueue<double>;
 	 * ---------------------------------
 	 * Initializes a new pqueue to have no elements.  
 	 */
-	PQueue();
+	PQueue(int (cmpFn)(ElemType, ElemType) = OperatorCmp);
 
 
 	/*
@@ -70,7 +70,7 @@ class PQueue
 	 * Adds the specified element to this pqueue. No effort is made to
 	 * avoid duplicates. 
 	 */
-	void enqueue(int newElem);
+	void enqueue(ElemType elem);
 
 
 	/*
@@ -80,7 +80,7 @@ class PQueue
 	 * Removes the largest priority element from this pqueue and returns it.
 	 * If this pqueue is empty, this function raises an error.
 	 */
-	int dequeueMax();
+	ElemType dequeueMax();
 
 
 	/*
@@ -130,16 +130,18 @@ class PQueue
 	// a precaution
 	DISALLOW_COPYING(PQueue)
 
-  	/* This is the representation for the unsorted vector.
-  	 * You will need to update this as you change representations. */
-    int *elements;
+    int (*cmpFn)(ElemType, ElemType);
+    
+    ElemType *elements;
     int numAllocated, numUsed;
     
     void enlargeCapacity();
     void bubbleUp();
     void heapify();
+    bool compareIfLeftGreaterThenRight(int left, int right);
     void swap(int i, int j);
 };
 
+#include "pqheap.cpp"
 
 #endif

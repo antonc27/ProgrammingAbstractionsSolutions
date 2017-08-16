@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EE815D791EEDD2DA0019E9BF /* pqheap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE815D781EEDD2DA0019E9BF /* pqheap.cpp */; };
 		EED213A41E683CB400CAE44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A31E683CB400CAE44D /* Carbon.framework */; };
 		EED213A61E683CBD00CAE44D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A51E683CBD00CAE44D /* QuickTime.framework */; };
 		EEF5439E1EDE2E1C0060510A /* libcs106.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF543931EDE2E1C0060510A /* libcs106.a */; };
@@ -19,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EE815D781EEDD2DA0019E9BF /* pqheap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pqheap.cpp; sourceTree = "<group>"; };
 		EED213A31E683CB400CAE44D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		EED213A51E683CBD00CAE44D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		EEF5438B1EDE2E1C0060510A /* bst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bst.h; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 				EEF543A31EDE2E4A0060510A /* pqueue.h */,
 				EEF543A41EDE2E4A0060510A /* pqueuetest.cpp */,
 				EEF543A51EDE2E4A0060510A /* pqueuetest.h */,
-				EE815D781EEDD2DA0019E9BF /* pqheap.cpp */,
 				EEF543A71EDE2E4A0060510A /* vector.h */,
 				EEF63DAC1E6632D200914775 /* Info.plist */,
 			);
@@ -213,7 +210,6 @@
 				EEF543AB1EDE2E4A0060510A /* pqueuetest.cpp in Sources */,
 				EEF543A91EDE2E4A0060510A /* performance.cpp in Sources */,
 				EEF543A81EDE2E4A0060510A /* main.cpp in Sources */,
-				EE815D791EEDD2DA0019E9BF /* pqheap.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
