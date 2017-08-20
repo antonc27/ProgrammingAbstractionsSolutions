@@ -5,6 +5,7 @@
  
 #include "genlib.h"
 #include "extgraph.h"
+#include "set.h"
 #include <iostream>
 #include <cmath>
 
@@ -24,6 +25,21 @@ struct coordT {
 	double x, y;
 };
 
+struct arcT;
+
+struct nodeT {
+    string name;
+    coordT position;
+    
+    Set<arcT *> arcs;
+};
+
+struct arcT {
+    int cost;
+    
+    nodeT *start;
+    nodeT *finish;
+};
 
 /* Function: DrawFilledCircleWithLabel
  * Usage:  DrawFilledCircleWithLabel(center, "Green", "You are here");
