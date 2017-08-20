@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		EE1CEDE01F44FC4800E171E1 /* libcs106.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEAE6631F44FB0E006B35EA /* libcs106.a */; };
 		EE1CEDE21F44FD1800E171E1 /* pathfinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE1CEDE11F44FD1800E171E1 /* pathfinder.cpp */; };
+		EE7F4CF71F4A31C70010EF73 /* Stanford.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EE7F4CF21F4A31C70010EF73 /* Stanford.jpg */; };
+		EE7F4CF81F4A31C70010EF73 /* USA.bmp in Resources */ = {isa = PBXBuildFile; fileRef = EE7F4CF31F4A31C70010EF73 /* USA.bmp */; };
+		EE7F4CF91F4A31C70010EF73 /* Small.txt in Resources */ = {isa = PBXBuildFile; fileRef = EE7F4CF41F4A31C70010EF73 /* Small.txt */; };
+		EE7F4CFA1F4A31C70010EF73 /* Stanford.txt in Resources */ = {isa = PBXBuildFile; fileRef = EE7F4CF51F4A31C70010EF73 /* Stanford.txt */; };
+		EE7F4CFB1F4A31C70010EF73 /* USA.txt in Resources */ = {isa = PBXBuildFile; fileRef = EE7F4CF61F4A31C70010EF73 /* USA.txt */; };
 		EED213A41E683CB400CAE44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A31E683CB400CAE44D /* Carbon.framework */; };
 		EED213A61E683CBD00CAE44D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A51E683CBD00CAE44D /* QuickTime.framework */; };
 		EEF63DCE1E66338F00914775 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF63DCD1E66338F00914775 /* Cocoa.framework */; };
@@ -17,6 +22,11 @@
 
 /* Begin PBXFileReference section */
 		EE1CEDE11F44FD1800E171E1 /* pathfinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pathfinder.cpp; sourceTree = "<group>"; };
+		EE7F4CF21F4A31C70010EF73 /* Stanford.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Stanford.jpg; sourceTree = "<group>"; };
+		EE7F4CF31F4A31C70010EF73 /* USA.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = USA.bmp; sourceTree = "<group>"; };
+		EE7F4CF41F4A31C70010EF73 /* Small.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Small.txt; sourceTree = "<group>"; };
+		EE7F4CF51F4A31C70010EF73 /* Stanford.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stanford.txt; sourceTree = "<group>"; };
+		EE7F4CF61F4A31C70010EF73 /* USA.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = USA.txt; sourceTree = "<group>"; };
 		EED213A31E683CB400CAE44D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		EED213A51E683CBD00CAE44D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		EEEAE65B1F44FB0E006B35EA /* bst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bst.h; sourceTree = "<group>"; };
@@ -60,6 +70,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE7F4CF01F4A31B20010EF73 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				EE7F4CF11F4A31C70010EF73 /* Pictures */,
+				EE7F4CF41F4A31C70010EF73 /* Small.txt */,
+				EE7F4CF51F4A31C70010EF73 /* Stanford.txt */,
+				EE7F4CF61F4A31C70010EF73 /* USA.txt */,
+			);
+			name = Input;
+			sourceTree = "<group>";
+		};
+		EE7F4CF11F4A31C70010EF73 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				EE7F4CF21F4A31C70010EF73 /* Stanford.jpg */,
+				EE7F4CF31F4A31C70010EF73 /* USA.bmp */,
+			);
+			path = Pictures;
+			sourceTree = "<group>";
+		};
 		EEEAE65A1F44FB0E006B35EA /* cs106 */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				EE1CEDE11F44FD1800E171E1 /* pathfinder.cpp */,
+				EE7F4CF01F4A31B20010EF73 /* Input */,
 				EEF63DAC1E6632D200914775 /* Info.plist */,
 			);
 			path = Assignment7;
@@ -183,6 +214,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE7F4CF71F4A31C70010EF73 /* Stanford.jpg in Resources */,
+				EE7F4CFB1F4A31C70010EF73 /* USA.txt in Resources */,
+				EE7F4CF81F4A31C70010EF73 /* USA.bmp in Resources */,
+				EE7F4CF91F4A31C70010EF73 /* Small.txt in Resources */,
+				EE7F4CFA1F4A31C70010EF73 /* Stanford.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

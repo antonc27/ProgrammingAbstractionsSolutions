@@ -6,7 +6,9 @@
 #include "genlib.h"
 #include "extgraph.h"
 #include "set.h"
+#include "map.h"
 #include <iostream>
+#include <fstream>
 #include <cmath>
 
 /* Constants
@@ -35,7 +37,7 @@ struct nodeT {
 };
 
 struct arcT {
-    int cost;
+    double cost;
     
     nodeT *start;
     nodeT *finish;
@@ -110,6 +112,12 @@ bool WithinDistance(coordT pt1, coordT pt2, double maxDistance = CircleRadius*2)
 }
 
 
+enum readGraphModeT {
+    Mark,
+    Image,
+    Nodes,
+    Arcs
+};
 
 int main()
 {
@@ -119,5 +127,53 @@ int main()
         << "The main attractions include a lovely visual presentation of the graph" << endl
         << "along with an implementation of Dijkstra's shortest path algorithm and" << endl
         << "the computation of a minimal spanning tree.  Enjoy!" << endl;
+    
+    string imageName;
+    Map<nodeT *> graph;
+    readGraphModeT mode;
+    
+    imageName = "";
+    graph.clear();
+    mode = Image;
+    
+    string bundlePath = "./Assignment7.app/Contents/Resources/";
+    string filename = "Small.txt";
+    
+    string filepath = bundlePath + filename;
+    fstream file;
+    file.open(filepath.c_str());
+    
+    while (file.get() != EOF) {
+        if (mode == Image) {
+            file >> imageName;
+            mode = Mark;
+        } else if (mode == Mark) {
+            string mark;
+            file >> mark;
+            if (mark == "NODES") {
+                mode = Nodes;
+            } else if (mark == "ARCS") {
+                mode = Arcs;
+            } else {
+                Error("Invalid read state: Expecting valid mark");
+            }
+        } else if (mode == Nodes) {
+            string nodeName;
+            double x, y;
+            file >> nodeName >> x >> y;
+            cout << nodeName << " " << x << " " << y << endl;
+        } else if (mode == Arcs) {
+            string startNodeName;
+            string finishNodeName;
+            double cost;
+            file >> startNodeName >> finishNodeName >> cost;
+            cout << startNodeName << " " << finishNodeName << " " << cost << endl;
+        } else {
+            Error("Invalid read state: State not defined");
+        }
+    }
+    
+    file.close();
+    
     return (0);
 }
