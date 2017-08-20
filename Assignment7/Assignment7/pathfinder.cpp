@@ -33,7 +33,7 @@ struct coordT {
  * specified radius.  A label is drawn to the right of the circle.
  * You can leave off the last argument if no label is desired.
  */
-void DrawFilledCircleWithLabel(coordT center, string color, string label = "")
+void DrawFilledCircleWithLabel(coordT center, std::string color, std::string label = "")
 {
 	MovePen(center.x + CircleRadius, center.y);
 	SetPenColor(color);
