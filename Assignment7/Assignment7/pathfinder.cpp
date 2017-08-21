@@ -143,17 +143,16 @@ int main()
     fstream file;
     file.open(filepath.c_str());
     
-    while (file.get() != EOF) {
+    while (file.peek() != EOF) {
         if (mode == Image) {
             file >> imageName;
+            cout << imageName << endl;
             mode = Mark;
         } else if (mode == Mark) {
             string mark;
             file >> mark;
             if (mark == "NODES") {
                 mode = Nodes;
-            } else if (mark == "ARCS") {
-                mode = Arcs;
             } else {
                 Error("Invalid read state: Expecting valid mark");
             }
@@ -162,12 +161,40 @@ int main()
             double x, y;
             file >> nodeName >> x >> y;
             cout << nodeName << " " << x << " " << y << endl;
+            
+            string arcsMark = "\rARCS";
+            int i = 0;
+            bool isNextArcs = false;
+            for (i = 0; i < arcsMark.length(); i++) {
+                int nextCh = file.get();
+                if (nextCh == EOF) {
+                    isNextArcs = false;
+                    break;
+                }
+                if (arcsMark[i] == (char)nextCh) {
+                    isNextArcs = true;
+                } else {
+                    isNextArcs = false;
+                    break;
+                }
+            }
+            if (isNextArcs) {
+                mode = Arcs;
+            } else {
+                for (int j = i; j >= 0; j--) {
+                    file.unget();
+                }
+            }
         } else if (mode == Arcs) {
             string startNodeName;
             string finishNodeName;
             double cost;
             file >> startNodeName >> finishNodeName >> cost;
-            cout << startNodeName << " " << finishNodeName << " " << cost << endl;
+            if (!file.fail()) {
+                // last line read twice somehow
+                // so, check for fail state here
+                cout << startNodeName << " " << finishNodeName << " " << cost << endl;
+            }
         } else {
             Error("Invalid read state: State not defined");
         }
