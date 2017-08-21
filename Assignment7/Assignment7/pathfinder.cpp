@@ -112,6 +112,17 @@ bool WithinDistance(coordT pt1, coordT pt2, double maxDistance = CircleRadius*2)
 }
 
 
+
+void clearData(string &imageName, Map<nodeT *> &graph) {
+    imageName = "";
+    graph.clear();
+}
+
+string getFilePath(string filename) {
+    string bundlePath = "./Assignment7.app/Contents/Resources/";
+    return bundlePath + filename;
+}
+
 enum readGraphModeT {
     Mark,
     Image,
@@ -119,30 +130,37 @@ enum readGraphModeT {
     Arcs
 };
 
-int main()
-{
-	InitGraphics();
-	SetWindowTitle("CS106 Pathfinder");
-    cout << "This masterful piece of work is a graph extravaganza!" << endl
-        << "The main attractions include a lovely visual presentation of the graph" << endl
-        << "along with an implementation of Dijkstra's shortest path algorithm and" << endl
-        << "the computation of a minimal spanning tree.  Enjoy!" << endl;
-    
-    string imageName;
-    Map<nodeT *> graph;
-    readGraphModeT mode;
-    
-    imageName = "";
-    graph.clear();
-    mode = Image;
-    
-    string bundlePath = "./Assignment7.app/Contents/Resources/";
-    string filename = "Small.txt";
-    
-    string filepath = bundlePath + filename;
+bool isNextArcs(fstream &file) {
+    string arcsMark = "\rARCS";
+    int i = 0;
+    bool isNextArcs = false;
+    for (i = 0; i < arcsMark.length(); i++) {
+        int nextCh = file.get();
+        if (nextCh == EOF) {
+            isNextArcs = false;
+            break;
+        }
+        if (arcsMark[i] == (char)nextCh) {
+            isNextArcs = true;
+        } else {
+            isNextArcs = false;
+            break;
+        }
+    }
+    if (isNextArcs) {
+        return true;
+    } else {
+        for (int j = i; j >= 0; j--) {
+            file.unget();
+        }
+        return false;
+    }
+}
+
+void readGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
     fstream file;
     file.open(filepath.c_str());
-    
+    readGraphModeT mode = Image;
     while (file.peek() != EOF) {
         if (mode == Image) {
             file >> imageName;
@@ -162,28 +180,8 @@ int main()
             file >> nodeName >> x >> y;
             cout << nodeName << " " << x << " " << y << endl;
             
-            string arcsMark = "\rARCS";
-            int i = 0;
-            bool isNextArcs = false;
-            for (i = 0; i < arcsMark.length(); i++) {
-                int nextCh = file.get();
-                if (nextCh == EOF) {
-                    isNextArcs = false;
-                    break;
-                }
-                if (arcsMark[i] == (char)nextCh) {
-                    isNextArcs = true;
-                } else {
-                    isNextArcs = false;
-                    break;
-                }
-            }
-            if (isNextArcs) {
+            if (isNextArcs(file)) {
                 mode = Arcs;
-            } else {
-                for (int j = i; j >= 0; j--) {
-                    file.unget();
-                }
             }
         } else if (mode == Arcs) {
             string startNodeName;
@@ -199,8 +197,27 @@ int main()
             Error("Invalid read state: State not defined");
         }
     }
-    
     file.close();
+}
+
+int main()
+{
+	InitGraphics();
+	SetWindowTitle("CS106 Pathfinder");
+    cout << "This masterful piece of work is a graph extravaganza!" << endl
+        << "The main attractions include a lovely visual presentation of the graph" << endl
+        << "along with an implementation of Dijkstra's shortest path algorithm and" << endl
+        << "the computation of a minimal spanning tree.  Enjoy!" << endl;
+    
+    string imageName;
+    Map<nodeT *> graph;
+    
+    clearData(imageName, graph);
+    
+    string filename = "Small.txt";
+    string filepath = getFilePath(filename);
+    
+    readGraph(filepath, imageName, graph);
     
     return (0);
 }
