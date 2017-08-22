@@ -215,6 +215,39 @@ void readGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
     file.close();
 }
 
+void clearScreen() {
+    MovePen(0, 0);
+    SetPenColor("White");
+    double w = GetWindowWidth();
+    double h = GetWindowHeight();
+    StartFilledRegion(1);
+    DrawLine(w, 0);
+    DrawLine(0, h);
+    DrawLine(-w, 0);
+    DrawLine(0, -h);
+    EndFilledRegion();
+}
+
+void drawGraph(string imageName, Map<nodeT *> &graph) {
+    clearScreen();
+    // following function do not work properly with last version of Xcode...
+    //DrawNamedPicture(imageName);
+    
+    Map<nodeT *>::Iterator itrNodes = graph.iterator();
+    while (itrNodes.hasNext()) {
+        string key = itrNodes.next();
+        nodeT *node = graph[key];
+        
+        Set<arcT *>::Iterator itrArcs = node->arcs.iterator();
+        while (itrArcs.hasNext()) {
+            arcT *arc = itrArcs.next();
+            DrawLineBetween(arc->start->position, arc->finish->position, "Black");
+        }
+        
+        DrawFilledCircleWithLabel(node->position, "Blue", node->name);
+    }
+}
+
 int main()
 {
 	InitGraphics();
@@ -233,6 +266,8 @@ int main()
     string filepath = getFilePath(filename);
     
     readGraph(filepath, imageName, graph);
+    
+    drawGraph(imageName, graph);
     
     return (0);
 }
