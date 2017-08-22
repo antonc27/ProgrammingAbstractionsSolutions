@@ -130,24 +130,23 @@ enum readGraphModeT {
     Arcs
 };
 
-bool isNextArcs(fstream &file) {
-    string arcsMark = "\rARCS";
+bool isNext(fstream &file, string str) {
     int i = 0;
-    bool isNextArcs = false;
-    for (i = 0; i < arcsMark.length(); i++) {
+    bool isNext = false;
+    for (i = 0; i < str.length(); i++) {
         int nextCh = file.get();
         if (nextCh == EOF) {
-            isNextArcs = false;
+            isNext = false;
             break;
         }
-        if (arcsMark[i] == (char)nextCh) {
-            isNextArcs = true;
+        if (str[i] == (char)nextCh) {
+            isNext = true;
         } else {
-            isNextArcs = false;
+            isNext = false;
             break;
         }
     }
-    if (isNextArcs) {
+    if (isNext) {
         return true;
     } else {
         for (int j = i; j >= 0; j--) {
@@ -155,6 +154,10 @@ bool isNextArcs(fstream &file) {
         }
         return false;
     }
+}
+
+bool isNextArcs(fstream &file) {
+    return isNext(file, "\rARCS") || isNext(file, "\nARCS");
 }
 
 void readGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
