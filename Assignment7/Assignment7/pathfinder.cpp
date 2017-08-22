@@ -167,7 +167,6 @@ void readGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
     while (file.peek() != EOF) {
         if (mode == Image) {
             file >> imageName;
-            cout << imageName << endl;
             mode = Mark;
         } else if (mode == Mark) {
             string mark;
@@ -181,7 +180,11 @@ void readGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
             string nodeName;
             double x, y;
             file >> nodeName >> x >> y;
-            cout << nodeName << " " << x << " " << y << endl;
+            
+            nodeT *node = new nodeT();
+            node->name = nodeName;
+            node->position = {x, y};
+            graph.add(nodeName, node);
             
             if (isNextArcs(file)) {
                 mode = Arcs;
@@ -194,7 +197,16 @@ void readGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
             if (!file.fail()) {
                 // last line read twice somehow
                 // so, check for fail state here
-                cout << startNodeName << " " << finishNodeName << " " << cost << endl;
+                
+                nodeT *startNode = graph[startNodeName];
+                nodeT *finishNode = graph[finishNodeName];
+                
+                arcT *arc = new arcT();
+                arc->start = startNode;
+                arc->finish = finishNode;
+                arc->cost = cost;
+                
+                startNode->arcs.add(arc);
             }
         } else {
             Error("Invalid read state: State not defined");
