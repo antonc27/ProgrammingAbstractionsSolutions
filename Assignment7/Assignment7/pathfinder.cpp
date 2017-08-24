@@ -258,6 +258,28 @@ nodeT *getClosestNode(Map<nodeT *> &graph, coordT position) {
     return NULL;
 }
 
+nodeT *getNodeByClick(Map<nodeT *> &graph) {
+    nodeT *node = NULL;
+    while (node == NULL) {
+        node = getClosestNode(graph, GetMouseClick());
+        if (node != NULL) {
+            break;
+        }
+    }
+    return node;
+}
+
+void selectPathEnds(Map<nodeT *> &graph, nodeT *&startNode, nodeT *&finishNode) {
+    startNode = getNodeByClick(graph);
+    finishNode = NULL;
+    while (true) {
+        finishNode = getNodeByClick(graph);
+        if (finishNode != startNode) {
+            break;
+        }
+    }
+}
+
 int main()
 {
 	InitGraphics();
@@ -280,15 +302,10 @@ int main()
     drawGraph(imageName, graph);
     UpdateDisplay();
     
-    while (true) {
-        coordT click = GetMouseClick();
-        nodeT *node = getClosestNode(graph, click);
-        if (node != NULL) {
-            cout << node->name << " was clicked" << endl;
-        } else {
-            cout << "No node nearby" << endl;
-        }
-    }
+    nodeT *startNode = NULL;
+    nodeT *finishNode = NULL;
+    selectPathEnds(graph, startNode, finishNode);
+    cout << "Path from " << startNode->name << " to " << finishNode->name << endl;
     
     return (0);
 }
