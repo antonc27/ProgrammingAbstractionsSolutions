@@ -7,6 +7,8 @@
 #include "extgraph.h"
 #include "set.h"
 #include "map.h"
+#include "stack.h"
+#include "queue.h"
 #include <iostream>
 #include <fstream>
 #include <cmath>
@@ -236,6 +238,7 @@ void DrawNode(string key, nodeT *node) {
     node->arcs.mapAll(DrawArc);
     
     DrawFilledCircleWithLabel(node->position, "Blue", node->name);
+    Pause(0.5);
 }
 
 void drawGraph(string imageName, Map<nodeT *> &graph) {
@@ -280,6 +283,65 @@ void selectPathEnds(Map<nodeT *> &graph, nodeT *&startNode, nodeT *&finishNode) 
     }
 }
 
+int length(Stack<arcT *> path) {
+    int length = 0;
+    while (!path.isEmpty()) {
+        length += path.pop()->cost;
+    }
+    return length;
+}
+
+void print(Stack<arcT *> path) {
+    while (!path.isEmpty()) {
+        arcT *arc = path.pop();
+        cout << arc->finish->name << " <- " << arc->start->name << " ";
+    }
+    cout << endl;
+}
+
+Stack<arcT *> findShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *finishNode) {
+    Set<nodeT *> visited;
+    visited.add(startNode);
+    
+    arcT *emptyArc = new arcT();
+    emptyArc->start = startNode;
+    emptyArc->finish = startNode;
+    emptyArc->cost = 0;
+    
+    Stack<arcT *> initialPath;
+    initialPath.push(emptyArc);
+    
+    Queue<Stack<arcT *>> queue;
+    queue.enqueue(initialPath);
+    
+    while (!queue.isEmpty()) {
+        Stack<arcT *> path = queue.dequeue();
+        print(path);
+        
+        Set<arcT *> arcs = path.peek()->finish->arcs;
+        Set<arcT *>::Iterator itrArcs = arcs.iterator();
+        while (itrArcs.hasNext()) {
+            arcT *arc = itrArcs.next();
+            nodeT *nextNode = arc->finish;
+            cout << "Next " << nextNode->name << endl;
+            if (!visited.contains(nextNode)) {
+                visited.add(nextNode);
+                Stack<arcT *> newPath = path;
+                cout << "New path ";
+                print(path);
+                newPath.push(arc);
+                
+                if (nextNode == finishNode) {
+                    return newPath;
+                } else {
+                    queue.enqueue(newPath);
+                }
+            }
+        }
+    }
+    return Stack<arcT *>();
+}
+
 int main()
 {
 	InitGraphics();
@@ -300,12 +362,15 @@ int main()
     readGraph(filepath, imageName, graph);
     
     drawGraph(imageName, graph);
-    UpdateDisplay();
     
     nodeT *startNode = NULL;
     nodeT *finishNode = NULL;
     selectPathEnds(graph, startNode, finishNode);
     cout << "Path from " << startNode->name << " to " << finishNode->name << endl;
+    
+    Stack<arcT *> shortestPath = findShortestPath(graph, startNode, finishNode);
+    print(shortestPath);
+    cout << "Shortest path length: " << length(shortestPath) << endl;
     
     return (0);
 }
