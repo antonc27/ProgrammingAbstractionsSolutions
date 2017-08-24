@@ -228,24 +228,34 @@ void clearScreen() {
     EndFilledRegion();
 }
 
+void DrawArc(arcT *arc) {
+    DrawLineBetween(arc->start->position, arc->finish->position, "Black");
+}
+
+void DrawNode(string key, nodeT *node) {
+    node->arcs.mapAll(DrawArc);
+    
+    DrawFilledCircleWithLabel(node->position, "Blue", node->name);
+}
+
 void drawGraph(string imageName, Map<nodeT *> &graph) {
     clearScreen();
     // following function do not work properly with last version of Xcode...
     //DrawNamedPicture(imageName);
     
+    graph.mapAll(DrawNode);
+}
+
+nodeT *getClosestNode(Map<nodeT *> &graph, coordT position) {
     Map<nodeT *>::Iterator itrNodes = graph.iterator();
     while (itrNodes.hasNext()) {
         string key = itrNodes.next();
         nodeT *node = graph[key];
-        
-        Set<arcT *>::Iterator itrArcs = node->arcs.iterator();
-        while (itrArcs.hasNext()) {
-            arcT *arc = itrArcs.next();
-            DrawLineBetween(arc->start->position, arc->finish->position, "Black");
+        if (WithinDistance(node->position, position)) {
+            return node;
         }
-        
-        DrawFilledCircleWithLabel(node->position, "Blue", node->name);
     }
+    return NULL;
 }
 
 int main()
@@ -268,6 +278,17 @@ int main()
     readGraph(filepath, imageName, graph);
     
     drawGraph(imageName, graph);
+    UpdateDisplay();
+    
+    while (true) {
+        coordT click = GetMouseClick();
+        nodeT *node = getClosestNode(graph, click);
+        if (node != NULL) {
+            cout << node->name << " was clicked" << endl;
+        } else {
+            cout << "No node nearby" << endl;
+        }
+    }
     
     return (0);
 }
