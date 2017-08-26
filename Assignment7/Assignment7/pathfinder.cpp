@@ -162,6 +162,18 @@ bool isNextArcs(fstream &file) {
     return isNext(file, "\rARCS") || isNext(file, "\nARCS");
 }
 
+void addArc(Map<nodeT *> &graph, string startNodeName, string finishNodeName, double cost) {
+    nodeT *startNode = graph[startNodeName];
+    nodeT *finishNode = graph[finishNodeName];
+    
+    arcT *arc = new arcT();
+    arc->start = startNode;
+    arc->finish = finishNode;
+    arc->cost = cost;
+    
+    startNode->arcs.add(arc);
+}
+
 void readGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
     fstream file;
     file.open(filepath.c_str());
@@ -200,15 +212,8 @@ void readGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
                 // last line read twice somehow
                 // so, check for fail state here
                 
-                nodeT *startNode = graph[startNodeName];
-                nodeT *finishNode = graph[finishNodeName];
-                
-                arcT *arc = new arcT();
-                arc->start = startNode;
-                arc->finish = finishNode;
-                arc->cost = cost;
-                
-                startNode->arcs.add(arc);
+                addArc(graph, startNodeName, finishNodeName, cost);
+                addArc(graph, finishNodeName, startNodeName, cost);
             }
         } else {
             Error("Invalid read state: State not defined");
@@ -294,7 +299,10 @@ int length(Stack<arcT *> path) {
 void print(Stack<arcT *> path) {
     while (!path.isEmpty()) {
         arcT *arc = path.pop();
-        cout << arc->finish->name << " <- " << arc->start->name << " ";
+        cout << arc->finish->name << " <- " << arc->start->name;
+        if (!path.isEmpty()) {
+            cout << ", ";
+        }
     }
     cout << endl;
 }
