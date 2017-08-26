@@ -27,6 +27,7 @@
 		EE7F4CF41F4A31C70010EF73 /* Small.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Small.txt; sourceTree = "<group>"; };
 		EE7F4CF51F4A31C70010EF73 /* Stanford.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stanford.txt; sourceTree = "<group>"; };
 		EE7F4CF61F4A31C70010EF73 /* USA.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = USA.txt; sourceTree = "<group>"; };
+		EEB0FF3C1F51896400173EC3 /* pqueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pqueue.h; sourceTree = "<group>"; };
 		EED213A31E683CB400CAE44D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		EED213A51E683CBD00CAE44D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		EEEAE65B1F44FB0E006B35EA /* bst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bst.h; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				EE1CEDE11F44FD1800E171E1 /* pathfinder.cpp */,
+				EEB0FF3C1F51896400173EC3 /* pqueue.h */,
 				EE7F4CF01F4A31B20010EF73 /* Input */,
 				EEF63DAC1E6632D200914775 /* Info.plist */,
 			);
