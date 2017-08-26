@@ -395,6 +395,85 @@ Stack<arcT *> findShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *fin
     return shortestPath;
 }
 
+int ArcCmp(arcT *arcOne, arcT *arcTwo) {
+    double one = arcOne->cost;
+    double two = arcTwo->cost;
+    
+    if (one == two) return 0;
+    else if (one < two) return 1;
+    else return -1;
+}
+
+void addArc(arcT *arc, PQueue<arcT *> &arcs) {
+    arcs.enqueue(arc);
+}
+
+void addArcs(string nodeName, nodeT *node, PQueue<arcT *> &arcs) {
+    node->arcs.mapAll(addArc, arcs);
+}
+
+int NodeCmp(nodeT *one, nodeT *two) {
+    return OperatorCmp(one->name, two->name);
+}
+
+void initNodeClusters(string nodeName, nodeT *node, Map<Set<nodeT *> *> &nodeClusters) {
+    Set<nodeT *> *cluster = new Set<nodeT *>(NodeCmp);
+    cluster->add(node);
+    nodeClusters[nodeName] = cluster;
+}
+
+void mergeClusters(Map<Set<nodeT *> *> &nodeClusters, string nodeNameOne, Set<nodeT *> *clusterOne, string nodeNameTwo, Set<nodeT *> *clusterTwo) {
+    Set<nodeT *> *merged = new Set<nodeT *>(NodeCmp);
+    merged->unionWith(*clusterOne);
+    merged->unionWith(*clusterTwo);
+
+    Set<nodeT *>::Iterator itr = merged->iterator();
+    while (itr.hasNext()) {
+        nodeT *node = itr.next();
+        nodeClusters[node->name] = merged;
+    }
+}
+
+void PrintNode(nodeT *node) {
+    cout << node->name << ", ";
+}
+
+void PrintCluster(Set<nodeT *> *cluster) {
+    cluster->mapAll(PrintNode);
+    cout << endl;
+}
+
+void findMinimumSpanningTree(Map<nodeT *> &graph) {
+    double totalLength = 0;
+    
+    PQueue<arcT *> arcs(ArcCmp);
+    graph.mapAll(addArcs, arcs);
+    
+    Map<Set<nodeT *> *> nodeClusters;
+    graph.mapAll(initNodeClusters, nodeClusters);
+    
+    while (!arcs.isEmpty()) {
+        arcT *arc = arcs.dequeueMax();
+
+        string startNodeName = arc->start->name;
+        Set<nodeT *> *clusterStart = nodeClusters[startNodeName];
+        
+        string finishNodeName = arc->finish->name;
+        Set<nodeT *> *clusterFinish = nodeClusters[finishNodeName];
+        
+        if (!clusterStart->equals(*clusterFinish)) {
+            totalLength += arc->cost;
+            mergeClusters(nodeClusters, startNodeName, clusterStart, finishNodeName, clusterFinish);
+            
+            DrawNode(arc->start, "Black");
+            DrawNode(arc->finish, "Black");
+            DrawArc(arc, "Red");
+            Pause(0.02);
+        }
+    }
+    cout << "Total length " << totalLength << endl;
+}
+
 int main()
 {
 	InitGraphics();
@@ -409,22 +488,25 @@ int main()
     
     clearData(imageName, graph);
     
-    string filename = "USA.txt";
+    string filename = "Stanford.txt";
     string filepath = getFilePath(filename);
     
     readGraph(filepath, imageName, graph);
     
-    drawGraph(imageName, graph);
+//    drawGraph(imageName, graph);
+//    
+//    nodeT *startNode = NULL;
+//    nodeT *finishNode = NULL;
+//    selectPathEnds(graph, startNode, finishNode);
+//    cout << "Path from " << startNode->name << " to " << finishNode->name << endl;
+//    
+//    Stack<arcT *> shortestPath = findShortestPath(graph, startNode, finishNode);
+//    print(shortestPath);
+//    cout << "Shortest path length: " << length(shortestPath) << endl;
+//    drawPath(shortestPath);
     
-    nodeT *startNode = NULL;
-    nodeT *finishNode = NULL;
-    selectPathEnds(graph, startNode, finishNode);
-    cout << "Path from " << startNode->name << " to " << finishNode->name << endl;
-    
-    Stack<arcT *> shortestPath = findShortestPath(graph, startNode, finishNode);
-    print(shortestPath);
-    cout << "Shortest path length: " << length(shortestPath) << endl;
-    drawPath(shortestPath);
+    clearScreen();
+    findMinimumSpanningTree(graph);
     
     return (0);
 }
