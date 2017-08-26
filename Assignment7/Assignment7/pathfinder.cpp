@@ -305,6 +305,16 @@ int PathCmp(Stack<arcT *> pathOne, Stack<arcT *> pathTwo) {
     else return -1;
 }
 
+bool containsNode(Stack<arcT *> path, nodeT *node) {
+    while (!path.isEmpty()) {
+        arcT *arc = path.pop();
+        if (arc->start == node || arc->finish == node) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void print(Stack<arcT *> path) {
     while (!path.isEmpty()) {
         arcT *arc = path.pop();
@@ -319,8 +329,7 @@ void print(Stack<arcT *> path) {
 }
 
 Stack<arcT *> findShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *finishNode) {
-    Set<nodeT *> visited;
-    visited.add(startNode);
+    Map<double> pathLengths;
     
     arcT *emptyArc = new arcT();
     emptyArc->start = startNode;
@@ -333,14 +342,17 @@ Stack<arcT *> findShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *fin
     PQueue<Stack<arcT *>> queue(PathCmp);
     queue.enqueue(initialPath);
     
+    Stack<arcT *> shortestPath = Stack<arcT *>();
     while (!queue.isEmpty()) {
         Stack<arcT *> path = queue.dequeueMax();
         cout << "Dequeued with cost " << length(path) << " ";
         print(path);
         
         nodeT *pathFinishNode = path.peek()->finish;
-        if (pathFinishNode == finishNode) {
-            return path;
+        bool isFoundPath = (pathFinishNode == finishNode);
+        bool isPathOptimal = (shortestPath.isEmpty() || length(path) < length(shortestPath));
+        if (isFoundPath && isPathOptimal) {
+            shortestPath = path;
         }
         
         Set<arcT *> arcs = pathFinishNode->arcs;
@@ -349,19 +361,21 @@ Stack<arcT *> findShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *fin
             arcT *arc = itrArcs.next();
             nodeT *nextNode = arc->finish;
             cout << "Next " << nextNode->name << " with cost " << arc->cost << endl;
-            if (!visited.contains(nextNode)) {
-                visited.add(nextNode);
-                
-                Stack<arcT *> newPath = path;
-                newPath.push(arc);
+            
+            Stack<arcT *> newPath = path;
+            newPath.push(arc);
+            double newPathLength = length(newPath);
+            
+            if (!containsNode(path, nextNode) && (!pathLengths.containsKey(nextNode->name) || newPathLength < pathLengths[nextNode->name])) {
                 cout << "New path ";
                 print(newPath);
                 
                 queue.enqueue(newPath);
+                pathLengths[nextNode->name] = newPathLength;
             }
         }
     }
-    return Stack<arcT *>();
+    return shortestPath;
 }
 
 int main()
@@ -391,7 +405,7 @@ int main()
 //    cout << "Path from " << startNode->name << " to " << finishNode->name << endl;
     
     nodeT *startNode = graph["Orlando"];
-    nodeT *finishNode = graph["Denver"];
+    nodeT *finishNode = graph["Portland"];
     
     Stack<arcT *> shortestPath = findShortestPath(graph, startNode, finishNode);
     print(shortestPath);
