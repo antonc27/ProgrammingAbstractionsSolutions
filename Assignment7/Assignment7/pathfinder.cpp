@@ -235,14 +235,22 @@ void clearScreen() {
     EndFilledRegion();
 }
 
-void DrawArc(arcT *arc) {
-    DrawLineBetween(arc->start->position, arc->finish->position, "Black");
+void DrawArc(arcT *arc, string color) {
+    DrawLineBetween(arc->start->position, arc->finish->position, color);
 }
 
-void DrawNode(string key, nodeT *node) {
-    node->arcs.mapAll(DrawArc);
+void DrawArcFn(arcT *arc) {
+    DrawArc(arc, "Black");
+}
+
+void DrawNode(nodeT *node, string color) {
+    DrawFilledCircleWithLabel(node->position, color, node->name);
+}
+
+void DrawNodeFn(string key, nodeT *node) {
+    node->arcs.mapAll(DrawArcFn);
     
-    DrawFilledCircleWithLabel(node->position, "Blue", node->name);
+    DrawNode(node, "Blue");
     //Pause(0.5);
 }
 
@@ -251,7 +259,16 @@ void drawGraph(string imageName, Map<nodeT *> &graph) {
     // following function do not work properly with last version of Xcode...
     //DrawNamedPicture(imageName);
     
-    graph.mapAll(DrawNode);
+    graph.mapAll(DrawNodeFn);
+}
+
+void drawPath(Stack<arcT *> path) {
+    while (!path.isEmpty()) {
+        arcT *arc = path.pop();
+        DrawArc(arc, "Red");
+        DrawNode(arc->start, "Red");
+        DrawNode(arc->finish, "Red");
+    }
 }
 
 nodeT *getClosestNode(Map<nodeT *> &graph, coordT position) {
@@ -399,17 +416,15 @@ int main()
     
     drawGraph(imageName, graph);
     
-//    nodeT *startNode = NULL;
-//    nodeT *finishNode = NULL;
-//    selectPathEnds(graph, startNode, finishNode);
-//    cout << "Path from " << startNode->name << " to " << finishNode->name << endl;
-    
-    nodeT *startNode = graph["Orlando"];
-    nodeT *finishNode = graph["Portland"];
+    nodeT *startNode = NULL;
+    nodeT *finishNode = NULL;
+    selectPathEnds(graph, startNode, finishNode);
+    cout << "Path from " << startNode->name << " to " << finishNode->name << endl;
     
     Stack<arcT *> shortestPath = findShortestPath(graph, startNode, finishNode);
     print(shortestPath);
     cout << "Shortest path length: " << length(shortestPath) << endl;
+    drawPath(shortestPath);
     
     return (0);
 }
