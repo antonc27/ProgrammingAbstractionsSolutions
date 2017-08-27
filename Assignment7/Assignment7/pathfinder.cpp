@@ -5,6 +5,7 @@
  
 #include "genlib.h"
 #include "extgraph.h"
+#include "simpio.h"
 #include "set.h"
 #include "map.h"
 #include "stack.h"
@@ -251,7 +252,7 @@ void DrawNodeFn(string key, nodeT *node) {
     node->arcs.mapAll(DrawArcFn);
     
     DrawNode(node, "Blue");
-    //Pause(0.5);
+//    Pause(0.02);
 }
 
 void DrawGraph(string imageName, Map<nodeT *> &graph) {
@@ -283,26 +284,32 @@ nodeT *GetClosestNode(Map<nodeT *> &graph, coordT position) {
     return NULL;
 }
 
-nodeT *GetNodeByClick(Map<nodeT *> &graph) {
+nodeT *GetNodeByClick(Map<nodeT *> &graph, string prompt) {
     nodeT *node = NULL;
     while (node == NULL) {
+        cout << endl << prompt;
         node = GetClosestNode(graph, GetMouseClick());
         if (node != NULL) {
             break;
         }
+        cout << "Invalid click. Please try again." << endl;
     }
     return node;
 }
 
 void SelectPathEnds(Map<nodeT *> &graph, nodeT *&startNode, nodeT *&finishNode) {
-    startNode = GetNodeByClick(graph);
+    startNode = GetNodeByClick(graph, "Click on starting location...  ");
+    cout << startNode->name << " chosen." << endl;
     finishNode = NULL;
     while (true) {
-        finishNode = GetNodeByClick(graph);
+        finishNode = GetNodeByClick(graph, "Click on ending location...  ");
         if (finishNode != startNode) {
             break;
         }
+        cout << "That's silly! You're already there!" << endl;
+        cout << "Invalid click. Please try again." << endl;
     }
+    cout << finishNode->name << " chosen." << endl;
 }
 
 double Length(Stack<arcT *> path) {
@@ -362,8 +369,6 @@ Stack<arcT *> FindShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *fin
     Stack<arcT *> shortestPath = Stack<arcT *>();
     while (!queue.isEmpty()) {
         Stack<arcT *> path = queue.dequeueMax();
-        cout << "Dequeued with cost " << Length(path) << " ";
-        Print(path);
         
         nodeT *pathFinishNode = path.peek()->finish;
         bool isFoundPath = (pathFinishNode == finishNode);
@@ -377,15 +382,12 @@ Stack<arcT *> FindShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *fin
         while (itrArcs.hasNext()) {
             arcT *arc = itrArcs.next();
             nodeT *nextNode = arc->finish;
-            cout << "Next " << nextNode->name << " with cost " << arc->cost << endl;
             
             Stack<arcT *> newPath = path;
             newPath.push(arc);
             double newPathLength = Length(newPath);
             
             if (!ContainsNode(path, nextNode) && (!pathLengths.containsKey(nextNode->name) || newPathLength < pathLengths[nextNode->name])) {
-                cout << "New path ";
-                Print(newPath);
                 
                 queue.enqueue(newPath);
                 pathLengths[nextNode->name] = newPathLength;
@@ -443,7 +445,7 @@ void PrintCluster(Set<nodeT *> *cluster) {
     cout << endl;
 }
 
-void FindMinimumSpanningTree(Map<nodeT *> &graph) {
+double FindMinimumSpanningTree(Map<nodeT *> &graph) {
     double totalLength = 0;
     
     PQueue<arcT *> arcs(ArcCmp);
@@ -471,7 +473,38 @@ void FindMinimumSpanningTree(Map<nodeT *> &graph) {
             Pause(0.02);
         }
     }
-    cout << "Total length " << totalLength << endl;
+    return totalLength;
+}
+
+string GetFilePathFromUser() {
+    string filepath;
+    while (true) {
+        cout << endl << "Please enter name of graph data file: ";
+        string filename = GetLine();
+        filepath = GetFilePath(filename);
+        
+        fstream file;
+        file.open(filepath.c_str());
+        if (file.fail()) {
+            cout << "Unable to open file named \"" << filename << "\". Please try again." << endl;
+            file.clear();
+            file.close();
+            continue;
+        }
+        file.close();
+        break;
+    }
+    return filepath;
+}
+
+void PromptMenu() {
+    cout << endl;
+    cout << "Your options are:" << endl;
+    cout << "        (1) Choose a new graph data file" << endl;
+    cout << "        (2) Find shortest path using Dijkstra's algorithm" << endl;
+    cout << "        (3) Compute the minimal spanning tree using Kruskal's algorithm" << endl;
+    cout << "        (4) Quit" << endl;
+    cout << "Enter choice: ";
 }
 
 int main()
@@ -486,27 +519,47 @@ int main()
     string imageName;
     Map<nodeT *> graph;
     
-    ClearData(imageName, graph);
+    string filepath = GetFilePathFromUser();
     
-    string filename = "Stanford.txt";
-    string filepath = GetFilePath(filename);
-    
-    ReadGraph(filepath, imageName, graph);
-    
-    DrawGraph(imageName, graph);
-    
-    nodeT *startNode = NULL;
-    nodeT *finishNode = NULL;
-    SelectPathEnds(graph, startNode, finishNode);
-    cout << "Path from " << startNode->name << " to " << finishNode->name << endl;
-    
-    Stack<arcT *> shortestPath = FindShortestPath(graph, startNode, finishNode);
-    Print(shortestPath);
-    cout << "Shortest path length: " << Length(shortestPath) << endl;
-    DrawPath(shortestPath);
-    
-    ClearScreen();
-    FindMinimumSpanningTree(graph);
+    while (true)
+    {
+        ClearData(imageName, graph);
+        ReadGraph(filepath, imageName, graph);
+        DrawGraph(imageName, graph);
+        
+        PromptMenu();
+        int choice = GetInteger();
+        if (choice == 1) {
+            filepath = GetFilePathFromUser();
+        } else if (choice == 2) {
+            nodeT *startNode = NULL;
+            nodeT *finishNode = NULL;
+            SelectPathEnds(graph, startNode, finishNode);
+            
+            cout << "Finding shortest path using Dijkstra..." << endl;
+            
+            Stack<arcT *> shortestPath = FindShortestPath(graph, startNode, finishNode);
+            DrawPath(shortestPath);
+            
+            cout << "Done! The shortest path from " << startNode->name;
+            cout << " to " << finishNode->name << " is ";
+            cout << Length(shortestPath) << " miles." << endl;
+            
+            cout << "Hit return to continue:";
+            GetLine();
+        } else if (choice == 3) {
+            cout << "Minimal spanning tree now displayed." << endl;
+            
+            ClearScreen();
+            double totalLength = FindMinimumSpanningTree(graph);
+            cout << "Total network length is " << totalLength << " miles." << endl;
+            
+            cout << "Hit return to continue:";
+            GetLine();
+        } else if (choice == 4) {
+            break;
+        }
+    }
     
     return (0);
 }
