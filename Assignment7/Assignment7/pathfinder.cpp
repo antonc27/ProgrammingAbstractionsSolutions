@@ -115,12 +115,12 @@ bool WithinDistance(coordT pt1, coordT pt2, double maxDistance = CircleRadius*2)
 
 
 
-void clearData(string &imageName, Map<nodeT *> &graph) {
+void ClearData(string &imageName, Map<nodeT *> &graph) {
     imageName = "";
     graph.clear();
 }
 
-string getFilePath(string filename) {
+string GetFilePath(string filename) {
     string bundlePath = "./Assignment7.app/Contents/Resources/";
     return bundlePath + filename;
 }
@@ -132,7 +132,7 @@ enum readGraphModeT {
     Arcs
 };
 
-bool isNext(fstream &file, string str) {
+bool IsNext(fstream &file, string str) {
     int i = 0;
     bool isNext = false;
     for (i = 0; i < str.length(); i++) {
@@ -158,11 +158,11 @@ bool isNext(fstream &file, string str) {
     }
 }
 
-bool isNextArcs(fstream &file) {
-    return isNext(file, "\rARCS") || isNext(file, "\nARCS");
+bool IsNextArcs(fstream &file) {
+    return IsNext(file, "\rARCS") || IsNext(file, "\nARCS");
 }
 
-void addArc(Map<nodeT *> &graph, string startNodeName, string finishNodeName, double cost) {
+void AddArc(Map<nodeT *> &graph, string startNodeName, string finishNodeName, double cost) {
     nodeT *startNode = graph[startNodeName];
     nodeT *finishNode = graph[finishNodeName];
     
@@ -174,7 +174,7 @@ void addArc(Map<nodeT *> &graph, string startNodeName, string finishNodeName, do
     startNode->arcs.add(arc);
 }
 
-void readGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
+void ReadGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
     fstream file;
     file.open(filepath.c_str());
     readGraphModeT mode = Image;
@@ -200,7 +200,7 @@ void readGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
             node->position = {x, y};
             graph.add(nodeName, node);
             
-            if (isNextArcs(file)) {
+            if (IsNextArcs(file)) {
                 mode = Arcs;
             }
         } else if (mode == Arcs) {
@@ -212,8 +212,8 @@ void readGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
                 // last line read twice somehow
                 // so, check for fail state here
                 
-                addArc(graph, startNodeName, finishNodeName, cost);
-                addArc(graph, finishNodeName, startNodeName, cost);
+                AddArc(graph, startNodeName, finishNodeName, cost);
+                AddArc(graph, finishNodeName, startNodeName, cost);
             }
         } else {
             Error("Invalid read state: State not defined");
@@ -222,7 +222,7 @@ void readGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
     file.close();
 }
 
-void clearScreen() {
+void ClearScreen() {
     MovePen(0, 0);
     SetPenColor("White");
     double w = GetWindowWidth();
@@ -254,15 +254,15 @@ void DrawNodeFn(string key, nodeT *node) {
     //Pause(0.5);
 }
 
-void drawGraph(string imageName, Map<nodeT *> &graph) {
-    clearScreen();
+void DrawGraph(string imageName, Map<nodeT *> &graph) {
+    ClearScreen();
     // following function do not work properly with last version of Xcode...
     //DrawNamedPicture(imageName);
     
     graph.mapAll(DrawNodeFn);
 }
 
-void drawPath(Stack<arcT *> path) {
+void DrawPath(Stack<arcT *> path) {
     while (!path.isEmpty()) {
         arcT *arc = path.pop();
         DrawArc(arc, "Red");
@@ -271,7 +271,7 @@ void drawPath(Stack<arcT *> path) {
     }
 }
 
-nodeT *getClosestNode(Map<nodeT *> &graph, coordT position) {
+nodeT *GetClosestNode(Map<nodeT *> &graph, coordT position) {
     Map<nodeT *>::Iterator itrNodes = graph.iterator();
     while (itrNodes.hasNext()) {
         string key = itrNodes.next();
@@ -283,10 +283,10 @@ nodeT *getClosestNode(Map<nodeT *> &graph, coordT position) {
     return NULL;
 }
 
-nodeT *getNodeByClick(Map<nodeT *> &graph) {
+nodeT *GetNodeByClick(Map<nodeT *> &graph) {
     nodeT *node = NULL;
     while (node == NULL) {
-        node = getClosestNode(graph, GetMouseClick());
+        node = GetClosestNode(graph, GetMouseClick());
         if (node != NULL) {
             break;
         }
@@ -294,18 +294,18 @@ nodeT *getNodeByClick(Map<nodeT *> &graph) {
     return node;
 }
 
-void selectPathEnds(Map<nodeT *> &graph, nodeT *&startNode, nodeT *&finishNode) {
-    startNode = getNodeByClick(graph);
+void SelectPathEnds(Map<nodeT *> &graph, nodeT *&startNode, nodeT *&finishNode) {
+    startNode = GetNodeByClick(graph);
     finishNode = NULL;
     while (true) {
-        finishNode = getNodeByClick(graph);
+        finishNode = GetNodeByClick(graph);
         if (finishNode != startNode) {
             break;
         }
     }
 }
 
-double length(Stack<arcT *> path) {
+double Length(Stack<arcT *> path) {
     double length = 0;
     while (!path.isEmpty()) {
         length += path.pop()->cost;
@@ -314,15 +314,15 @@ double length(Stack<arcT *> path) {
 }
 
 int PathCmp(Stack<arcT *> pathOne, Stack<arcT *> pathTwo) {
-    double one = length(pathOne);
-    double two = length(pathTwo);
+    double one = Length(pathOne);
+    double two = Length(pathTwo);
     
     if (one == two) return 0;
     else if (one < two) return 1;
     else return -1;
 }
 
-bool containsNode(Stack<arcT *> path, nodeT *node) {
+bool ContainsNode(Stack<arcT *> path, nodeT *node) {
     while (!path.isEmpty()) {
         arcT *arc = path.pop();
         if (arc->start == node || arc->finish == node) {
@@ -332,7 +332,7 @@ bool containsNode(Stack<arcT *> path, nodeT *node) {
     return false;
 }
 
-void print(Stack<arcT *> path) {
+void Print(Stack<arcT *> path) {
     while (!path.isEmpty()) {
         arcT *arc = path.pop();
         if (arc->finish != arc->start) {
@@ -345,7 +345,7 @@ void print(Stack<arcT *> path) {
     cout << endl;
 }
 
-Stack<arcT *> findShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *finishNode) {
+Stack<arcT *> FindShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *finishNode) {
     Map<double> pathLengths;
     
     arcT *emptyArc = new arcT();
@@ -362,12 +362,12 @@ Stack<arcT *> findShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *fin
     Stack<arcT *> shortestPath = Stack<arcT *>();
     while (!queue.isEmpty()) {
         Stack<arcT *> path = queue.dequeueMax();
-        cout << "Dequeued with cost " << length(path) << " ";
-        print(path);
+        cout << "Dequeued with cost " << Length(path) << " ";
+        Print(path);
         
         nodeT *pathFinishNode = path.peek()->finish;
         bool isFoundPath = (pathFinishNode == finishNode);
-        bool isPathOptimal = (shortestPath.isEmpty() || length(path) < length(shortestPath));
+        bool isPathOptimal = (shortestPath.isEmpty() || Length(path) < Length(shortestPath));
         if (isFoundPath && isPathOptimal) {
             shortestPath = path;
         }
@@ -381,11 +381,11 @@ Stack<arcT *> findShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *fin
             
             Stack<arcT *> newPath = path;
             newPath.push(arc);
-            double newPathLength = length(newPath);
+            double newPathLength = Length(newPath);
             
-            if (!containsNode(path, nextNode) && (!pathLengths.containsKey(nextNode->name) || newPathLength < pathLengths[nextNode->name])) {
+            if (!ContainsNode(path, nextNode) && (!pathLengths.containsKey(nextNode->name) || newPathLength < pathLengths[nextNode->name])) {
                 cout << "New path ";
-                print(newPath);
+                Print(newPath);
                 
                 queue.enqueue(newPath);
                 pathLengths[nextNode->name] = newPathLength;
@@ -404,25 +404,25 @@ int ArcCmp(arcT *arcOne, arcT *arcTwo) {
     else return -1;
 }
 
-void addArc(arcT *arc, PQueue<arcT *> &arcs) {
+void AddArc(arcT *arc, PQueue<arcT *> &arcs) {
     arcs.enqueue(arc);
 }
 
-void addArcs(string nodeName, nodeT *node, PQueue<arcT *> &arcs) {
-    node->arcs.mapAll(addArc, arcs);
+void AddArcs(string nodeName, nodeT *node, PQueue<arcT *> &arcs) {
+    node->arcs.mapAll(AddArc, arcs);
 }
 
 int NodeCmp(nodeT *one, nodeT *two) {
     return OperatorCmp(one->name, two->name);
 }
 
-void initNodeClusters(string nodeName, nodeT *node, Map<Set<nodeT *> *> &nodeClusters) {
+void InitNodeClusters(string nodeName, nodeT *node, Map<Set<nodeT *> *> &nodeClusters) {
     Set<nodeT *> *cluster = new Set<nodeT *>(NodeCmp);
     cluster->add(node);
     nodeClusters[nodeName] = cluster;
 }
 
-void mergeClusters(Map<Set<nodeT *> *> &nodeClusters, string nodeNameOne, Set<nodeT *> *clusterOne, string nodeNameTwo, Set<nodeT *> *clusterTwo) {
+void MergeClusters(Map<Set<nodeT *> *> &nodeClusters, string nodeNameOne, Set<nodeT *> *clusterOne, string nodeNameTwo, Set<nodeT *> *clusterTwo) {
     Set<nodeT *> *merged = new Set<nodeT *>(NodeCmp);
     merged->unionWith(*clusterOne);
     merged->unionWith(*clusterTwo);
@@ -443,14 +443,14 @@ void PrintCluster(Set<nodeT *> *cluster) {
     cout << endl;
 }
 
-void findMinimumSpanningTree(Map<nodeT *> &graph) {
+void FindMinimumSpanningTree(Map<nodeT *> &graph) {
     double totalLength = 0;
     
     PQueue<arcT *> arcs(ArcCmp);
-    graph.mapAll(addArcs, arcs);
+    graph.mapAll(AddArcs, arcs);
     
     Map<Set<nodeT *> *> nodeClusters;
-    graph.mapAll(initNodeClusters, nodeClusters);
+    graph.mapAll(InitNodeClusters, nodeClusters);
     
     while (!arcs.isEmpty()) {
         arcT *arc = arcs.dequeueMax();
@@ -463,7 +463,7 @@ void findMinimumSpanningTree(Map<nodeT *> &graph) {
         
         if (!clusterStart->equals(*clusterFinish)) {
             totalLength += arc->cost;
-            mergeClusters(nodeClusters, startNodeName, clusterStart, finishNodeName, clusterFinish);
+            MergeClusters(nodeClusters, startNodeName, clusterStart, finishNodeName, clusterFinish);
             
             DrawNode(arc->start, "Black");
             DrawNode(arc->finish, "Black");
@@ -486,27 +486,27 @@ int main()
     string imageName;
     Map<nodeT *> graph;
     
-    clearData(imageName, graph);
+    ClearData(imageName, graph);
     
     string filename = "Stanford.txt";
-    string filepath = getFilePath(filename);
+    string filepath = GetFilePath(filename);
     
-    readGraph(filepath, imageName, graph);
+    ReadGraph(filepath, imageName, graph);
     
-//    drawGraph(imageName, graph);
-//    
-//    nodeT *startNode = NULL;
-//    nodeT *finishNode = NULL;
-//    selectPathEnds(graph, startNode, finishNode);
-//    cout << "Path from " << startNode->name << " to " << finishNode->name << endl;
-//    
-//    Stack<arcT *> shortestPath = findShortestPath(graph, startNode, finishNode);
-//    print(shortestPath);
-//    cout << "Shortest path length: " << length(shortestPath) << endl;
-//    drawPath(shortestPath);
+    DrawGraph(imageName, graph);
     
-    clearScreen();
-    findMinimumSpanningTree(graph);
+    nodeT *startNode = NULL;
+    nodeT *finishNode = NULL;
+    SelectPathEnds(graph, startNode, finishNode);
+    cout << "Path from " << startNode->name << " to " << finishNode->name << endl;
+    
+    Stack<arcT *> shortestPath = FindShortestPath(graph, startNode, finishNode);
+    Print(shortestPath);
+    cout << "Shortest path length: " << Length(shortestPath) << endl;
+    DrawPath(shortestPath);
+    
+    ClearScreen();
+    FindMinimumSpanningTree(graph);
     
     return (0);
 }
