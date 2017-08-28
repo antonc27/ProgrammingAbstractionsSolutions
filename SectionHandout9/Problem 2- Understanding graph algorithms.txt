@@ -36,7 +36,7 @@ Dequeue Lounge -> Conversatory -> Ball Room with cost 7
 Mark Ball Room with cost 7
 Observe arcs from Ball Room
     Discard Lounge -> Conversatory -> Ball Room -> Conversatory
-    Enqueue Lounge -> Conversatory -> Ball Room -> Billiard Room with cost 13
+    Enqueue Lounge -> Conversatory -> Ball Room -> Billiard Room with cost 14
     Discard Lounge -> Conversatory -> Ball Room -> Dinning Room
     Enqueue Lounge -> Conversatory -> Ball Room -> Kitchen with cost 14
 
@@ -68,7 +68,7 @@ Observe arcs from Study
     Enqueue Lounge -> Hall -> Study -> Kitchen with cost 15
     Enqueue Lounge -> Hall -> Study -> Library with cost 19
 
-Dequeue Lounge -> Conversatory -> Ball Room -> Billiard Room with cost 13
+Dequeue Lounge -> Conversatory -> Ball Room -> Billiard Room with cost 14
 Discard it
 
 Dequeue Lounge -> Conversatory -> Ball Room -> Kitchen with cost 14
