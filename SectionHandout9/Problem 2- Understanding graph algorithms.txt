@@ -2,11 +2,11 @@ Problem 2: Understanding graph algorithms
 
 a) DFS from Lounge
 
-Lounge, Conservatory, Ball Room, Billiard Room, Library, Hall, Study, Kitchen, Dinning Room
+Lounge, Conservatory, Ball Room, Billiard Room, Library, Hall, Dinning Room, Kitchen, Study 
 
 b) BFS from Kitchen
 
-Kitchen, Ball Room, Dinning Room, Study, Conservatory, Billiard Room, Hall, Lounge, Library
+Kitchen, Ball Room, Dinning Room, Study, Billiard Room, Conservatory, Hall, Lounge, Library
 
 c) Dijkstra's algo for minimum path from Lounge to Library
 
