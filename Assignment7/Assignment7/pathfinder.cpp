@@ -329,16 +329,6 @@ int PathCmp(Stack<arcT *> pathOne, Stack<arcT *> pathTwo) {
     else return -1;
 }
 
-bool ContainsNode(Stack<arcT *> path, nodeT *node) {
-    while (!path.isEmpty()) {
-        arcT *arc = path.pop();
-        if (arc->start == node || arc->finish == node) {
-            return true;
-        }
-    }
-    return false;
-}
-
 void Print(Stack<arcT *> path) {
     while (!path.isEmpty()) {
         arcT *arc = path.pop();
@@ -366,15 +356,21 @@ Stack<arcT *> FindShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *fin
     PQueue<Stack<arcT *>> queue(PathCmp);
     queue.enqueue(initialPath);
     
-    Stack<arcT *> shortestPath = Stack<arcT *>();
+    int dequeueCount = -1;
     while (!queue.isEmpty()) {
         Stack<arcT *> path = queue.dequeueMax();
+        dequeueCount++;
         
         nodeT *pathFinishNode = path.peek()->finish;
-        bool isFoundPath = (pathFinishNode == finishNode);
-        bool isPathOptimal = (shortestPath.isEmpty() || Length(path) < Length(shortestPath));
-        if (isFoundPath && isPathOptimal) {
-            shortestPath = path;
+        if (pathFinishNode == finishNode) {
+            cout << "The algorithm dequeued " << dequeueCount << " paths to find the optimal one." << endl;
+            return path;
+        }
+        
+        if (pathLengths.containsKey(pathFinishNode->name)) {
+            continue;
+        } else {
+            pathLengths[pathFinishNode->name] = Length(path);
         }
         
         Set<arcT *> arcs = pathFinishNode->arcs;
@@ -383,18 +379,15 @@ Stack<arcT *> FindShortestPath(Map<nodeT *> &graph, nodeT *startNode, nodeT *fin
             arcT *arc = itrArcs.next();
             nodeT *nextNode = arc->finish;
             
-            Stack<arcT *> newPath = path;
-            newPath.push(arc);
-            double newPathLength = Length(newPath);
-            
-            if (!ContainsNode(path, nextNode) && (!pathLengths.containsKey(nextNode->name) || newPathLength < pathLengths[nextNode->name])) {
+            if (!pathLengths.containsKey(nextNode->name)) {
+                Stack<arcT *> newPath = path;
+                newPath.push(arc);
                 
                 queue.enqueue(newPath);
-                pathLengths[nextNode->name] = newPathLength;
             }
         }
     }
-    return shortestPath;
+    return Stack<arcT *>();
 }
 
 int ArcCmp(arcT *arcOne, arcT *arcTwo) {
