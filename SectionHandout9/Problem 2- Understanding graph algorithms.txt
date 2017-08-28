@@ -1,0 +1,80 @@
+Problem 2: Understanding graph algorithms
+
+a) DFS from Lounge
+
+Lounge, Conservatory, Ball Room, Billiard Room, Library, Hall, Study, Kitchen, Dinning Room
+
+b) BFS from Kitchen
+
+Kitchen, Ball Room, Dinning Room, Study, Conservatory, Billiard Room, Hall, Lounge, Library
+
+c) Dijkstra's algo for minimum path from Lounge to Library
+
+Observe arcs from Lounge
+Enqueue Lounge -> Conversatory with cost 3, Lounge -> Dinning Room with cost 4 and Lounge -> Hall with cost 8
+
+Dequeue Lounge -> Conversatory with cost 3
+Observe arcs from Conversatory
+Enqueue Lounge -> Conversatory -> Ball Room with cost 7, Lounge -> Conversatory -> Billiard Room with cost 10
+
+Dequeue Lounge -> Dinning Room with cost 4
+Observe arcs from Dinning Room
+Discard Lounge -> Dinning Room -> Ball Room, Lounge -> Dinning Room -> Hall
+Enqueue Lounge -> Dinning Room -> Kitchen with cost 15
+
+Dequeue Lounge -> Conversatory -> Ball Room
+Observe arcs from Ball Room
+Dicard Lounge -> Conversatory -> Ball Room -> Billiard Room, Lounge -> Conversatory -> Ball Room -> Dinning Room, Lounge -> Conversatory -> Ball Room -> Kitchen
+
+Dequeue Lounge -> Conversatory -> Billiard Room
+Observe arcs from Billiard Room
+Discard Lounge -> Conversatory -> Billiard Room -> Ball Room
+
+Found shortest path Lounge -> Conversatory -> Billiard Room -> Library with cost 14
+
+d) Kruskal's algo for minimum spanning tree
+
+Check Conversatory - Lounge arc with cost 3
+Conversatory, Lounge now belongs to {Conversatory, Lounge} class of cost 3
+
+Check Kitchen - Study arc with cost 3
+Kitchen, Study now belongs to {Kitchen, Study} class of cost 3
+
+Check Ball Room - Conversatory arc with cost 4
+Ball Room, Conversatory now belongs to {Ball Room, Conversatory, Lounge} class of cost 7
+
+Check Billard Room, Library arc with cost 4
+Billard Room, Library now belongs to {Billard Room, Library} class of cost 4
+
+Check Dinning Room - Lounge arc with cost 4
+Dinning Room, Lounge now belongs to {Ball Room, Conversatory, Dinning Room, Lounge} class of cost 11
+
+Check Hall - Study arc with cost 4
+Hall, Study now belongs to {Hall, Kitchen, Study} class of cost 7
+
+Check Ball Room - Billiard Room arc with cost 6
+Ball Room, Billiard Room now belongs to {Ball Room, Billard Room, Conversatory, Dinning Room, Library, Lounge} class of cost 15
+
+Check Ball Room - Dinning Room arc with cost 7
+Discard Ball Room - Dinning Room as ends already belongs to same class
+
+Check Ball Room - Kitchen  arc with cost 7
+Ball Room, Kitchen now belongs to {Ball Room, Billard Room, Conversatory, Dinning Room, Hall, Kitchen, Library, Lounge, Study} class of cost 22
+
+Check Billard Room - Kitchen arc with cost 7
+Discard Billard Room - Kitchen as ends already belongs to same class
+
+Check Hall - Library arc with cost 7
+Discard Hall - Library as ends already belongs to same class
+
+Check Library - Study arc with cost 7
+Discard Library - Study as ends already belongs to same class
+
+Check Dinning Room - Hall arc with cost 8
+Discard Dinning Room - Hall as ends already belongs to same class
+
+Check Lounge - Hall arc with cost 8
+Discard Lounge - Hall as ends already belongs to same class
+
+Check Dinning Room - Kitchen arc with cost 11
+Dinning Room - Kitchen as ends already belongs to same class
