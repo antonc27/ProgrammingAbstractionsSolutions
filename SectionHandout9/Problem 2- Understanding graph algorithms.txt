@@ -53,13 +53,13 @@ Check Hall - Study arc with cost 4
 Hall, Study now belongs to {Hall, Kitchen, Study} class of cost 7
 
 Check Ball Room - Billiard Room arc with cost 6
-Ball Room, Billiard Room now belongs to {Ball Room, Billard Room, Conversatory, Dinning Room, Library, Lounge} class of cost 15
+Ball Room, Billiard Room now belongs to {Ball Room, Billard Room, Conversatory, Dinning Room, Library, Lounge} class of cost 21
 
 Check Ball Room - Dinning Room arc with cost 7
 Discard Ball Room - Dinning Room as ends already belongs to same class
 
 Check Ball Room - Kitchen  arc with cost 7
-Ball Room, Kitchen now belongs to {Ball Room, Billard Room, Conversatory, Dinning Room, Hall, Kitchen, Library, Lounge, Study} class of cost 22
+Ball Room, Kitchen now belongs to {Ball Room, Billard Room, Conversatory, Dinning Room, Hall, Kitchen, Library, Lounge, Study} class of cost 35
 
 Check Billard Room - Kitchen arc with cost 7
 Discard Billard Room - Kitchen as ends already belongs to same class
