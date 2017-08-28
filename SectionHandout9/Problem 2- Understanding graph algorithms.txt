@@ -10,27 +10,76 @@ Kitchen, Ball Room, Dinning Room, Study, Billiard Room, Conservatory, Hall, Loun
 
 c) Dijkstra's algo for minimum path from Lounge to Library
 
+Mark Lounge with cost 0
+
 Observe arcs from Lounge
-Enqueue Lounge -> Conversatory with cost 3, Lounge -> Dinning Room with cost 4 and Lounge -> Hall with cost 8
+    Enqueue Lounge -> Conversatory with cost 3
+    Enqueue Lounge -> Dinning Room with cost 4
+    Enqueue Lounge -> Hall with cost 8
 
 Dequeue Lounge -> Conversatory with cost 3
+Mark Conversatory with cost 3
 Observe arcs from Conversatory
-Enqueue Lounge -> Conversatory -> Ball Room with cost 7, Lounge -> Conversatory -> Billiard Room with cost 10
+    Discard Conversatory -> Lounge
+    Enqueue Lounge -> Conversatory -> Ball Room with cost 7
+    Enqueue Lounge -> Conversatory -> Billiard Room with cost 10
 
 Dequeue Lounge -> Dinning Room with cost 4
+Mark Dinning Room with cost 4
 Observe arcs from Dinning Room
-Discard Lounge -> Dinning Room -> Ball Room, Lounge -> Dinning Room -> Hall
-Enqueue Lounge -> Dinning Room -> Kitchen with cost 15
+    Enqueue Lounge -> Dinning Room -> Ball Room with cost 11
+    Enqueue Lounge -> Dinning Room -> Hall with cost 12
+    Enqueue Lounge -> Dinning Room -> Kitchen with cost 15
+    Discard Lounge -> Dinning Room -> Lounge
 
-Dequeue Lounge -> Conversatory -> Ball Room
+Dequeue Lounge -> Conversatory -> Ball Room with cost 7
+Mark Ball Room with cost 7
 Observe arcs from Ball Room
-Dicard Lounge -> Conversatory -> Ball Room -> Billiard Room, Lounge -> Conversatory -> Ball Room -> Dinning Room, Lounge -> Conversatory -> Ball Room -> Kitchen
+    Discard Lounge -> Conversatory -> Ball Room -> Conversatory
+    Enqueue Lounge -> Conversatory -> Ball Room -> Billiard Room with cost 13
+    Discard Lounge -> Conversatory -> Ball Room -> Dinning Room
+    Enqueue Lounge -> Conversatory -> Ball Room -> Kitchen with cost 14
 
-Dequeue Lounge -> Conversatory -> Billiard Room
+Dequeue Lounge -> Hall with cost 8
+Mark Hall with cost 8
+Observe arcs from Hall
+    Discard Lounge -> Hall -> Dinning Room
+    Enqueue Lounge -> Hall -> Library with cost 15
+    Discard Lounge -> Hall -> Lounge
+    Enqueue Lounge -> Hall -> Study with cost 12
+
+Dequeue Lounge -> Conversatory -> Billiard Room with cost 10
+Mark Billiard Room with cost 10
 Observe arcs from Billiard Room
-Discard Lounge -> Conversatory -> Billiard Room -> Ball Room
+    Discard Lounge -> Conversatory -> Billiard Room -> Ball Room
+    Discard Lounge -> Conversatory -> Billiard Room -> Conversatory
+    Enqueue Lounge -> Conversatory -> Billiard Room -> Library with cost 14
 
-Found shortest path Lounge -> Conversatory -> Billiard Room -> Library with cost 14
+Dequeue Lounge -> Dinning Room -> Ball Room with cost 11
+Discard it
+
+Dequeue Lounge -> Dinning Room -> Hall with cost 12
+Discard it
+
+Dequeue Lounge -> Hall -> Study with cost 12
+Mark Study with cost 12
+Observe arcs from Study
+    Discard Lounge -> Hall -> Study -> Hall
+    Enqueue Lounge -> Hall -> Study -> Kitchen with cost 15
+    Enqueue Lounge -> Hall -> Study -> Library with cost 19
+
+Dequeue Lounge -> Conversatory -> Ball Room -> Billiard Room with cost 13
+Discard it
+
+Dequeue Lounge -> Conversatory -> Ball Room -> Kitchen with cost 14
+Mark Kitchen with cost 14
+Observe arcs from Kitchen
+    Discard Lounge -> Conversatory -> Ball Room -> Kitchen -> Ball Room
+    Discard Lounge -> Conversatory -> Ball Room -> Kitchen -> Dinning Room
+    Discard Lounge -> Conversatory -> Ball Room -> Kitchen -> Study
+
+Dequeue Lounge -> Conversatory -> Billiard Room -> Library with cost 14
+Return it as shortest path
 
 d) Kruskal's algo for minimum spanning tree
 
