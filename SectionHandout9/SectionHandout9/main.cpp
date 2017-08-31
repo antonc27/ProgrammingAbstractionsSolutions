@@ -52,6 +52,29 @@ void DrawLineBetween(coordT start, coordT end, string color)
     SetPenColor(color);
     MovePen(start.x, start.y);
     DrawLine(end.x - start.x, end.y - start.y);
+    
+    double d = 0.2;
+    
+    double nx_n = end.x - start.x;
+    double ny_n = end.y - start.y;
+    
+    double r = sqrt(nx_n * nx_n + ny_n * ny_n);
+    
+    double nx = nx_n / r;
+    double ny = ny_n / r;
+    
+    double tan = ny / nx;
+    double alpha = atan(tan);
+//    alpha *= -tan / fabs(tan);
+    
+    double sp_x = end.x - d * cos(alpha);
+    double sp_y = end.y - d * sin(alpha);
+    
+    MovePen(sp_x, sp_y);
+    DrawLine(-ny * d, nx * d);
+    
+    MovePen(sp_x, sp_y);
+    DrawLine(ny * d, -nx * d);
 }
 
 void ClearData(string &imageName, Map<nodeT *> &graph) {
