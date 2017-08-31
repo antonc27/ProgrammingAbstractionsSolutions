@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE8FCE951F58B23B00F7F9F9 /* Small.txt in Resources */ = {isa = PBXBuildFile; fileRef = EE8FCE921F58B23B00F7F9F9 /* Small.txt */; };
+		EE8FCE961F58B23B00F7F9F9 /* Stanford.txt in Resources */ = {isa = PBXBuildFile; fileRef = EE8FCE931F58B23B00F7F9F9 /* Stanford.txt */; };
+		EE8FCE971F58B23B00F7F9F9 /* USA.txt in Resources */ = {isa = PBXBuildFile; fileRef = EE8FCE941F58B23B00F7F9F9 /* USA.txt */; };
 		EEB2454A1F586DAB006B6BD4 /* libcs106.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB2453F1F586DAB006B6BD4 /* libcs106.a */; };
 		EED213A41E683CB400CAE44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A31E683CB400CAE44D /* Carbon.framework */; };
 		EED213A61E683CBD00CAE44D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A51E683CBD00CAE44D /* QuickTime.framework */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE8FCE921F58B23B00F7F9F9 /* Small.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Small.txt; sourceTree = "<group>"; };
+		EE8FCE931F58B23B00F7F9F9 /* Stanford.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stanford.txt; sourceTree = "<group>"; };
+		EE8FCE941F58B23B00F7F9F9 /* USA.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = USA.txt; sourceTree = "<group>"; };
 		EEB245371F586DAB006B6BD4 /* bst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bst.h; sourceTree = "<group>"; };
 		EEB245381F586DAB006B6BD4 /* cmpfn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cmpfn.h; sourceTree = "<group>"; };
 		EEB245391F586DAB006B6BD4 /* console.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = console.h; sourceTree = "<group>"; };
@@ -60,6 +66,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE8FCE981F58B24000F7F9F9 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				EE8FCE921F58B23B00F7F9F9 /* Small.txt */,
+				EE8FCE931F58B23B00F7F9F9 /* Stanford.txt */,
+				EE8FCE941F58B23B00F7F9F9 /* USA.txt */,
+			);
+			name = Input;
+			sourceTree = "<group>";
+		};
 		EEB245361F586DAB006B6BD4 /* cs106 */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				EEF63DC71E66333600914775 /* main.cpp */,
+				EE8FCE981F58B24000F7F9F9 /* Input */,
 				EEF63DAC1E6632D200914775 /* Info.plist */,
 			);
 			path = SectionHandout9;
@@ -183,6 +200,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE8FCE971F58B23B00F7F9F9 /* USA.txt in Resources */,
+				EE8FCE951F58B23B00F7F9F9 /* Small.txt in Resources */,
+				EE8FCE961F58B23B00F7F9F9 /* Stanford.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
