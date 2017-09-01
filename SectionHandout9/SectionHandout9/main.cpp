@@ -83,9 +83,9 @@ void DrawLineBetween(coordT start, coordT end, string color)
     DrawLine(-ny * k + d * cos(alpha), nx * k + d * sin(alpha));
 }
 
-void ClearData(string &imageName, Map<nodeT *> &graph) {
+void ClearData(string &imageName, graphT &graph) {
     imageName = "";
-    graph.clear();
+    graph.allNodes.clear();
 }
 
 string GetFilePath(string filename) {
@@ -130,9 +130,20 @@ bool IsNextArcs(fstream &file) {
     return IsNext(file, "\rARCS") || IsNext(file, "\nARCS");
 }
 
-void AddArc(Map<nodeT *> &graph, string startNodeName, string finishNodeName, double cost) {
-    nodeT *startNode = graph[startNodeName];
-    nodeT *finishNode = graph[finishNodeName];
+nodeT *findNode(graphT &graph, string nodeName) {
+    Set<nodeT *>::Iterator itr = graph.allNodes.iterator();
+    while (itr.hasNext()) {
+        nodeT *next = itr.next();
+        if (next->name == nodeName) {
+            return next;
+        }
+    }
+    return NULL;
+}
+
+void AddArc(graphT &graph, string startNodeName, string finishNodeName, double cost) {
+    nodeT *startNode = findNode(graph, startNodeName);
+    nodeT *finishNode = findNode(graph, finishNodeName);
     
     arcT *arc = new arcT();
     arc->start = startNode;
@@ -141,7 +152,7 @@ void AddArc(Map<nodeT *> &graph, string startNodeName, string finishNodeName, do
     startNode->connected.add(arc);
 }
 
-void ReadGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
+void ReadGraph(string filepath, string &imageName, graphT &graph) {
     fstream file;
     file.open(filepath.c_str());
     readGraphModeT mode = Image;
@@ -165,7 +176,7 @@ void ReadGraph(string filepath, string &imageName, Map<nodeT *> &graph) {
             nodeT *node = new nodeT();
             node->name = nodeName;
             node->position = {x, y};
-            graph.add(nodeName, node);
+            graph.allNodes.add(node);
             
             if (IsNextArcs(file)) {
                 mode = Arcs;
@@ -210,17 +221,17 @@ void DrawNode(nodeT *node, string color) {
     DrawFilledCircleWithLabel(node->position, color, node->name);
 }
 
-void DrawNodeFn(string key, nodeT *node) {
+void DrawNodeFn(nodeT *node) {
     node->connected.mapAll(DrawArcFn);
     
     DrawNode(node, "Blue");
     //    Pause(0.02);
 }
 
-void DrawGraph(string imageName, Map<nodeT *> &graph) {
+void DrawGraph(string imageName, graphT &graph) {
     ClearScreen();
     
-    graph.mapAll(DrawNodeFn);
+    graph.allNodes.mapAll(DrawNodeFn);
 }
 
 string GetFilePathFromUser() {
@@ -244,18 +255,24 @@ string GetFilePathFromUser() {
     return filepath;
 }
 
+bool IsCyclicGraph(graphT &graph) {
+    return false;
+}
+
 int main() 
 {
     InitGraphics();
     
     string imageName;
-    Map<nodeT *> graph;
+    graphT graph;
     
     string filepath = GetFilePathFromUser();
     
     ClearData(imageName, graph);
     ReadGraph(filepath, imageName, graph);
     DrawGraph(imageName, graph);
+    
+    cout << "This graph is cyclic: " << boolalpha << IsCyclicGraph(graph) << endl;
     
     GetLine();
 	return 0;
