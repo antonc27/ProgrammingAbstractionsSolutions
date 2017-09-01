@@ -7,7 +7,7 @@
 #include <fstream>
 #include <math.h>
 
-const double CircleRadius = 0.05;
+const double CircleRadius = 0.03;
 const int LabelFontSize = 9;
 
 struct coordT {
@@ -39,12 +39,12 @@ void DrawFilledCircleWithLabel(coordT center, std::string color, std::string lab
     StartFilledRegion(1.0);
     DrawArc(CircleRadius, 0, 360);
     EndFilledRegion();
-    if (!label.empty()) {
-        MovePen(center.x + CircleRadius, center.y);
-        SetFont("Helvetica");
-        SetPointSize(LabelFontSize);
-        DrawTextString(label);
-    }
+//    if (!label.empty()) {
+//        MovePen(center.x + CircleRadius, center.y);
+//        SetFont("Helvetica");
+//        SetPointSize(LabelFontSize);
+//        DrawTextString(label);
+//    }
 }
 
 void DrawLineBetween(coordT start, coordT end, string color)
@@ -53,7 +53,7 @@ void DrawLineBetween(coordT start, coordT end, string color)
     MovePen(start.x, start.y);
     DrawLine(end.x - start.x, end.y - start.y);
     
-    double d = 0.2;
+    double d = 0.1;
     
     double nx_n = end.x - start.x;
     double ny_n = end.y - start.y;
@@ -65,16 +65,22 @@ void DrawLineBetween(coordT start, coordT end, string color)
     
     double tan = ny / nx;
     double alpha = atan(tan);
-//    alpha *= -tan / fabs(tan);
+    if (nx < 0) {
+        alpha += M_PI;
+    }
     
     double sp_x = end.x - d * cos(alpha);
     double sp_y = end.y - d * sin(alpha);
     
-    MovePen(sp_x, sp_y);
-    DrawLine(-ny * d, nx * d);
+    double k = 0.05;
     
     MovePen(sp_x, sp_y);
-    DrawLine(ny * d, -nx * d);
+    DrawLine(-ny * k, nx * k);
+    DrawLine(ny * k + d * cos(alpha), -nx * k + d * sin(alpha));
+    
+    MovePen(sp_x, sp_y);
+    DrawLine(ny * k, -nx * k);
+    DrawLine(-ny * k + d * cos(alpha), nx * k + d * sin(alpha));
 }
 
 void ClearData(string &imageName, Map<nodeT *> &graph) {
