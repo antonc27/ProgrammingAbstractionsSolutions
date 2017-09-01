@@ -13,6 +13,7 @@
 		EEB2454A1F586DAB006B6BD4 /* libcs106.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB2453F1F586DAB006B6BD4 /* libcs106.a */; };
 		EED213A41E683CB400CAE44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A31E683CB400CAE44D /* Carbon.framework */; };
 		EED213A61E683CBD00CAE44D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A51E683CBD00CAE44D /* QuickTime.framework */; };
+		EEE9715C1F5A10D800804CB3 /* SmallCyclic.txt in Resources */ = {isa = PBXBuildFile; fileRef = EEE9715B1F5A10D800804CB3 /* SmallCyclic.txt */; };
 		EEF63DC81E66333600914775 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF63DC71E66333600914775 /* main.cpp */; };
 		EEF63DCE1E66338F00914775 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF63DCD1E66338F00914775 /* Cocoa.framework */; };
 		EEF63DD01E66339C00914775 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF63DCF1E66339C00914775 /* libstdc++.6.tbd */; };
@@ -43,6 +44,7 @@
 		EEB245491F586DAB006B6BD4 /* vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
 		EED213A31E683CB400CAE44D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		EED213A51E683CBD00CAE44D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
+		EEE9715B1F5A10D800804CB3 /* SmallCyclic.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SmallCyclic.txt; sourceTree = "<group>"; };
 		EEF63D9E1E6632D100914775 /* SectionHandout9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SectionHandout9.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF63DAC1E6632D200914775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEF63DC71E66333600914775 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				EE8FCE921F58B23B00F7F9F9 /* Small.txt */,
+				EEE9715B1F5A10D800804CB3 /* SmallCyclic.txt */,
 				EE8FCE931F58B23B00F7F9F9 /* Stanford.txt */,
 				EE8FCE941F58B23B00F7F9F9 /* USA.txt */,
 			);
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE8FCE971F58B23B00F7F9F9 /* USA.txt in Resources */,
+				EEE9715C1F5A10D800804CB3 /* SmallCyclic.txt in Resources */,
 				EE8FCE951F58B23B00F7F9F9 /* Small.txt in Resources */,
 				EE8FCE961F58B23B00F7F9F9 /* Stanford.txt in Resources */,
 			);

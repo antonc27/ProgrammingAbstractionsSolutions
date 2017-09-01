@@ -3,7 +3,7 @@
 #include "simpio.h"
 #include "genlib.h"
 #include "set.h"
-#include "map.h"
+#include "stack.h"
 #include <fstream>
 #include <math.h>
 
@@ -39,12 +39,12 @@ void DrawFilledCircleWithLabel(coordT center, std::string color, std::string lab
     StartFilledRegion(1.0);
     DrawArc(CircleRadius, 0, 360);
     EndFilledRegion();
-//    if (!label.empty()) {
-//        MovePen(center.x + CircleRadius, center.y);
-//        SetFont("Helvetica");
-//        SetPointSize(LabelFontSize);
-//        DrawTextString(label);
-//    }
+    if (!label.empty()) {
+        MovePen(center.x + CircleRadius, center.y);
+        SetFont("Helvetica");
+        SetPointSize(LabelFontSize);
+        DrawTextString(label);
+    }
 }
 
 void DrawLineBetween(coordT start, coordT end, string color)
@@ -256,6 +256,39 @@ string GetFilePathFromUser() {
 }
 
 bool IsCyclicGraph(graphT &graph) {
+    Set<nodeT *> visited;
+    Stack<nodeT *> traversalStack;
+    
+    Set<nodeT *>::Iterator itr = graph.allNodes.iterator();
+    while (itr.hasNext()) {
+        nodeT *next = itr.next();
+        
+        visited.clear();
+        traversalStack.clear();
+        
+        visited.add(next);
+        traversalStack.push(next);
+        
+        while (!traversalStack.isEmpty()) {
+            nodeT *nextToTraverse = traversalStack.pop();
+            
+            Set<arcT *>::Iterator connectedItr = nextToTraverse->connected.iterator();
+            while (connectedItr.hasNext()) {
+                arcT *nextArc = connectedItr.next();
+                nodeT *connectedWithNext = nextArc->end;
+                
+                if (visited.contains(connectedWithNext)) {
+                    if (connectedWithNext == next) {
+                        return true;
+                    }
+                } else {
+                    visited.add(connectedWithNext);
+                    traversalStack.push(connectedWithNext);
+                }
+            }
+        }
+    }
+    
     return false;
 }
 
