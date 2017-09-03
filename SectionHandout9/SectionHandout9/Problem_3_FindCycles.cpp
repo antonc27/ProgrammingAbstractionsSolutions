@@ -1,12 +1,12 @@
 //
-//  Problem_2_FindCycles.cpp
+//  Problem_3_FindCycles.cpp
 //  SectionHandout9
 //
 //  Created by AC27 on 03/09/2017.
 //  Copyright © 2017 AC27. All rights reserved.
 //
 
-#include "Problem_2_FindCycles.h"
+#include "Problem_3_FindCycles.h"
 #include "graph_utils.h"
 
 bool IsCyclicGraph(graphT &graph) {
@@ -46,7 +46,7 @@ bool IsCyclicGraph(graphT &graph) {
     return false;
 }
 
-int Problem_2_FindCycles_main() {
+int Problem_3_FindCycles_main() {
     InitGraphics();
     
     string imageName;

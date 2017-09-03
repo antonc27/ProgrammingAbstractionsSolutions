@@ -13,7 +13,7 @@
 		EEB2454A1F586DAB006B6BD4 /* libcs106.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB2453F1F586DAB006B6BD4 /* libcs106.a */; };
 		EED213A41E683CB400CAE44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A31E683CB400CAE44D /* Carbon.framework */; };
 		EED213A61E683CBD00CAE44D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A51E683CBD00CAE44D /* QuickTime.framework */; };
-		EED56C061F5CAEFF008A1088 /* Problem_2_FindCycles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EED56C041F5CAEFF008A1088 /* Problem_2_FindCycles.cpp */; };
+		EED56C061F5CAEFF008A1088 /* Problem_3_FindCycles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EED56C041F5CAEFF008A1088 /* Problem_3_FindCycles.cpp */; };
 		EED56C081F5CB129008A1088 /* graph_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EED56C071F5CB129008A1088 /* graph_utils.cpp */; };
 		EEE9715C1F5A10D800804CB3 /* SmallCyclic.txt in Resources */ = {isa = PBXBuildFile; fileRef = EEE9715B1F5A10D800804CB3 /* SmallCyclic.txt */; };
 		EEF63DC81E66333600914775 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF63DC71E66333600914775 /* main.cpp */; };
@@ -47,8 +47,8 @@
 		EED213A31E683CB400CAE44D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		EED213A51E683CBD00CAE44D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		EED56C031F5CADEE008A1088 /* graph_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graph_utils.h; sourceTree = "<group>"; };
-		EED56C041F5CAEFF008A1088 /* Problem_2_FindCycles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Problem_2_FindCycles.cpp; sourceTree = "<group>"; };
-		EED56C051F5CAEFF008A1088 /* Problem_2_FindCycles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Problem_2_FindCycles.h; sourceTree = "<group>"; };
+		EED56C041F5CAEFF008A1088 /* Problem_3_FindCycles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Problem_3_FindCycles.cpp; sourceTree = "<group>"; };
+		EED56C051F5CAEFF008A1088 /* Problem_3_FindCycles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Problem_3_FindCycles.h; sourceTree = "<group>"; };
 		EED56C071F5CB129008A1088 /* graph_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = graph_utils.cpp; sourceTree = "<group>"; };
 		EEE9715B1F5A10D800804CB3 /* SmallCyclic.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SmallCyclic.txt; sourceTree = "<group>"; };
 		EEF63D9E1E6632D100914775 /* SectionHandout9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SectionHandout9.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,13 +112,13 @@
 			path = ../cs106;
 			sourceTree = "<group>";
 		};
-		EED56C091F5CB21B008A1088 /* Problem_2_FindCycles */ = {
+		EED56C091F5CB21B008A1088 /* Problem_3_FindCycles */ = {
 			isa = PBXGroup;
 			children = (
-				EED56C051F5CAEFF008A1088 /* Problem_2_FindCycles.h */,
-				EED56C041F5CAEFF008A1088 /* Problem_2_FindCycles.cpp */,
+				EED56C051F5CAEFF008A1088 /* Problem_3_FindCycles.h */,
+				EED56C041F5CAEFF008A1088 /* Problem_3_FindCycles.cpp */,
 			);
-			name = Problem_2_FindCycles;
+			name = Problem_3_FindCycles;
 			sourceTree = "<group>";
 		};
 		EEF63D951E6632D100914775 = {
@@ -144,7 +144,7 @@
 			children = (
 				EED56C031F5CADEE008A1088 /* graph_utils.h */,
 				EED56C071F5CB129008A1088 /* graph_utils.cpp */,
-				EED56C091F5CB21B008A1088 /* Problem_2_FindCycles */,
+				EED56C091F5CB21B008A1088 /* Problem_3_FindCycles */,
 				EEF63DC71E66333600914775 /* main.cpp */,
 				EE8FCE981F58B24000F7F9F9 /* Input */,
 				EEF63DAC1E6632D200914775 /* Info.plist */,
@@ -235,7 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EED56C061F5CAEFF008A1088 /* Problem_2_FindCycles.cpp in Sources */,
+				EED56C061F5CAEFF008A1088 /* Problem_3_FindCycles.cpp in Sources */,
 				EEF63DC81E66333600914775 /* main.cpp in Sources */,
 				EED56C081F5CB129008A1088 /* graph_utils.cpp in Sources */,
 			);

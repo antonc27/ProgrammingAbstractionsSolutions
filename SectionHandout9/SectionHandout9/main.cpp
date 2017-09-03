@@ -1,8 +1,8 @@
 #include "genlib.h"
-#include "Problem_2_FindCycles.h"
+#include "Problem_3_FindCycles.h"
 
 int main() 
 {
-    Problem_2_FindCycles_main();
+    Problem_3_FindCycles_main();
 	return 0;
 }
