@@ -15,6 +15,7 @@
 		EED213A61E683CBD00CAE44D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A51E683CBD00CAE44D /* QuickTime.framework */; };
 		EED56C061F5CAEFF008A1088 /* Problem_3_FindCycles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EED56C041F5CAEFF008A1088 /* Problem_3_FindCycles.cpp */; };
 		EED56C081F5CB129008A1088 /* graph_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EED56C071F5CB129008A1088 /* graph_utils.cpp */; };
+		EED56C0C1F5CB34E008A1088 /* Problem_4_WordLadderGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EED56C0A1F5CB34E008A1088 /* Problem_4_WordLadderGraph.cpp */; };
 		EEE9715C1F5A10D800804CB3 /* SmallCyclic.txt in Resources */ = {isa = PBXBuildFile; fileRef = EEE9715B1F5A10D800804CB3 /* SmallCyclic.txt */; };
 		EEF63DC81E66333600914775 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF63DC71E66333600914775 /* main.cpp */; };
 		EEF63DCE1E66338F00914775 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF63DCD1E66338F00914775 /* Cocoa.framework */; };
@@ -50,6 +51,8 @@
 		EED56C041F5CAEFF008A1088 /* Problem_3_FindCycles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Problem_3_FindCycles.cpp; sourceTree = "<group>"; };
 		EED56C051F5CAEFF008A1088 /* Problem_3_FindCycles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Problem_3_FindCycles.h; sourceTree = "<group>"; };
 		EED56C071F5CB129008A1088 /* graph_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = graph_utils.cpp; sourceTree = "<group>"; };
+		EED56C0A1F5CB34E008A1088 /* Problem_4_WordLadderGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Problem_4_WordLadderGraph.cpp; sourceTree = "<group>"; };
+		EED56C0B1F5CB34E008A1088 /* Problem_4_WordLadderGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Problem_4_WordLadderGraph.h; sourceTree = "<group>"; };
 		EEE9715B1F5A10D800804CB3 /* SmallCyclic.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SmallCyclic.txt; sourceTree = "<group>"; };
 		EEF63D9E1E6632D100914775 /* SectionHandout9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SectionHandout9.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF63DAC1E6632D200914775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,6 +124,15 @@
 			name = Problem_3_FindCycles;
 			sourceTree = "<group>";
 		};
+		EED56C0D1F5CB36D008A1088 /* Problem_4_WordLadderGraph */ = {
+			isa = PBXGroup;
+			children = (
+				EED56C0B1F5CB34E008A1088 /* Problem_4_WordLadderGraph.h */,
+				EED56C0A1F5CB34E008A1088 /* Problem_4_WordLadderGraph.cpp */,
+			);
+			name = Problem_4_WordLadderGraph;
+			sourceTree = "<group>";
+		};
 		EEF63D951E6632D100914775 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +157,7 @@
 				EED56C031F5CADEE008A1088 /* graph_utils.h */,
 				EED56C071F5CB129008A1088 /* graph_utils.cpp */,
 				EED56C091F5CB21B008A1088 /* Problem_3_FindCycles */,
+				EED56C0D1F5CB36D008A1088 /* Problem_4_WordLadderGraph */,
 				EEF63DC71E66333600914775 /* main.cpp */,
 				EE8FCE981F58B24000F7F9F9 /* Input */,
 				EEF63DAC1E6632D200914775 /* Info.plist */,
@@ -238,6 +251,7 @@
 				EED56C061F5CAEFF008A1088 /* Problem_3_FindCycles.cpp in Sources */,
 				EEF63DC81E66333600914775 /* main.cpp in Sources */,
 				EED56C081F5CB129008A1088 /* graph_utils.cpp in Sources */,
+				EED56C0C1F5CB34E008A1088 /* Problem_4_WordLadderGraph.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
