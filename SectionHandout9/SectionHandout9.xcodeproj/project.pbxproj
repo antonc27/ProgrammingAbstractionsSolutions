@@ -13,6 +13,8 @@
 		EEB2454A1F586DAB006B6BD4 /* libcs106.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB2453F1F586DAB006B6BD4 /* libcs106.a */; };
 		EED213A41E683CB400CAE44D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A31E683CB400CAE44D /* Carbon.framework */; };
 		EED213A61E683CBD00CAE44D /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED213A51E683CBD00CAE44D /* QuickTime.framework */; };
+		EED56C061F5CAEFF008A1088 /* Problem_2_FindCycles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EED56C041F5CAEFF008A1088 /* Problem_2_FindCycles.cpp */; };
+		EED56C081F5CB129008A1088 /* graph_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EED56C071F5CB129008A1088 /* graph_utils.cpp */; };
 		EEE9715C1F5A10D800804CB3 /* SmallCyclic.txt in Resources */ = {isa = PBXBuildFile; fileRef = EEE9715B1F5A10D800804CB3 /* SmallCyclic.txt */; };
 		EEF63DC81E66333600914775 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF63DC71E66333600914775 /* main.cpp */; };
 		EEF63DCE1E66338F00914775 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF63DCD1E66338F00914775 /* Cocoa.framework */; };
@@ -44,6 +46,10 @@
 		EEB245491F586DAB006B6BD4 /* vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
 		EED213A31E683CB400CAE44D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		EED213A51E683CBD00CAE44D /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
+		EED56C031F5CADEE008A1088 /* graph_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graph_utils.h; sourceTree = "<group>"; };
+		EED56C041F5CAEFF008A1088 /* Problem_2_FindCycles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Problem_2_FindCycles.cpp; sourceTree = "<group>"; };
+		EED56C051F5CAEFF008A1088 /* Problem_2_FindCycles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Problem_2_FindCycles.h; sourceTree = "<group>"; };
+		EED56C071F5CB129008A1088 /* graph_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = graph_utils.cpp; sourceTree = "<group>"; };
 		EEE9715B1F5A10D800804CB3 /* SmallCyclic.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SmallCyclic.txt; sourceTree = "<group>"; };
 		EEF63D9E1E6632D100914775 /* SectionHandout9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SectionHandout9.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF63DAC1E6632D200914775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,6 +112,15 @@
 			path = ../cs106;
 			sourceTree = "<group>";
 		};
+		EED56C091F5CB21B008A1088 /* Problem_2_FindCycles */ = {
+			isa = PBXGroup;
+			children = (
+				EED56C051F5CAEFF008A1088 /* Problem_2_FindCycles.h */,
+				EED56C041F5CAEFF008A1088 /* Problem_2_FindCycles.cpp */,
+			);
+			name = Problem_2_FindCycles;
+			sourceTree = "<group>";
+		};
 		EEF63D951E6632D100914775 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +142,9 @@
 		EEF63DA01E6632D100914775 /* SectionHandout9 */ = {
 			isa = PBXGroup;
 			children = (
+				EED56C031F5CADEE008A1088 /* graph_utils.h */,
+				EED56C071F5CB129008A1088 /* graph_utils.cpp */,
+				EED56C091F5CB21B008A1088 /* Problem_2_FindCycles */,
 				EEF63DC71E66333600914775 /* main.cpp */,
 				EE8FCE981F58B24000F7F9F9 /* Input */,
 				EEF63DAC1E6632D200914775 /* Info.plist */,
@@ -217,7 +235,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EED56C061F5CAEFF008A1088 /* Problem_2_FindCycles.cpp in Sources */,
 				EEF63DC81E66333600914775 /* main.cpp in Sources */,
+				EED56C081F5CB129008A1088 /* graph_utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +272,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -298,7 +318,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
