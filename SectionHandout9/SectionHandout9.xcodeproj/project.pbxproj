@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE8C48F81F5DEE1000874F48 /* lexicon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE8C48F61F5DEE1000874F48 /* lexicon.cpp */; };
 		EE8FCE951F58B23B00F7F9F9 /* Small.txt in Resources */ = {isa = PBXBuildFile; fileRef = EE8FCE921F58B23B00F7F9F9 /* Small.txt */; };
 		EE8FCE961F58B23B00F7F9F9 /* Stanford.txt in Resources */ = {isa = PBXBuildFile; fileRef = EE8FCE931F58B23B00F7F9F9 /* Stanford.txt */; };
 		EE8FCE971F58B23B00F7F9F9 /* USA.txt in Resources */ = {isa = PBXBuildFile; fileRef = EE8FCE941F58B23B00F7F9F9 /* USA.txt */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE8C48F61F5DEE1000874F48 /* lexicon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lexicon.cpp; sourceTree = "<group>"; };
+		EE8C48F71F5DEE1000874F48 /* lexicon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexicon.h; sourceTree = "<group>"; };
 		EE8FCE921F58B23B00F7F9F9 /* Small.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Small.txt; sourceTree = "<group>"; };
 		EE8FCE931F58B23B00F7F9F9 /* Stanford.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stanford.txt; sourceTree = "<group>"; };
 		EE8FCE941F58B23B00F7F9F9 /* USA.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = USA.txt; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 			children = (
 				EED56C031F5CADEE008A1088 /* graph_utils.h */,
 				EED56C071F5CB129008A1088 /* graph_utils.cpp */,
+				EE8C48F71F5DEE1000874F48 /* lexicon.h */,
+				EE8C48F61F5DEE1000874F48 /* lexicon.cpp */,
 				EED56C091F5CB21B008A1088 /* Problem_3_FindCycles */,
 				EED56C0D1F5CB36D008A1088 /* Problem_4_WordLadderGraph */,
 				EEF63DC71E66333600914775 /* main.cpp */,
@@ -248,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE8C48F81F5DEE1000874F48 /* lexicon.cpp in Sources */,
 				EED56C061F5CAEFF008A1088 /* Problem_3_FindCycles.cpp in Sources */,
 				EEF63DC81E66333600914775 /* main.cpp in Sources */,
 				EED56C081F5CB129008A1088 /* graph_utils.cpp in Sources */,
