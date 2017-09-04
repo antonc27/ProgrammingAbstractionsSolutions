@@ -49,53 +49,58 @@ void ConstructGraph(graphT &graph, Lexicon &lex) {
     lex.mapAll(AddWordToGraph, graph);
 }
 
+void PrintLadder(Stack<nodeT *> ladder) {
+    while (!ladder.isEmpty()) {
+        cout << ladder.pop()->name;
+        if (ladder.size() > 0) {
+            cout << " <- ";
+        }
+    }
+    cout << endl;
+}
+
 Stack<nodeT *> FindShortestLaddder(graphT &graph, nodeT start, nodeT end) {
-    Stack<nodeT *> shortest;
-    
     nodeT *startP = &start;
     nodeT *endP = &end;
     
     Set<nodeT *> visited;
-//    visited.add(startP);
     
-    Queue<nodeT *> queue;
-    queue.enqueue(startP);
+    Queue<Stack<nodeT *>> queue;
+    
+    Stack<nodeT *> initial;
+    initial.push(startP);
+    queue.enqueue(initial);
     
     while (!queue.isEmpty()) {
-        nodeT *nextNode = queue.dequeue();
+        Stack<nodeT *> path = queue.dequeue();
+//        cout << "Dequeued: ";
+//        PrintLadder(path);
         
-        if (!visited.contains(nextNode)) {
-            visited.add(nextNode);
-            shortest.push(nextNode);
+        nodeT *endPathNode = path.peek();
+        
+        if (!visited.contains(endPathNode)) {
+            visited.add(endPathNode);
             
-            if (nextNode == endP) {
-                break;
+            if (endPathNode->name == endP->name) {
+                return path;
             }
             
-            Set<arcT *> connected = nextNode->connected;
+            Set<arcT *> connected = endPathNode->connected;
             Set<arcT *>::Iterator arcItr = connected.iterator();
             while (arcItr.hasNext()) {
                 arcT *arc = arcItr.next();
                 nodeT *nextNextNode = arc->end;
                 if (!visited.contains(nextNextNode)) {
-//                    visited.add(nextNextNode);
-                    queue.enqueue(nextNextNode);
+                    
+                    Stack<nodeT *> newPath = path;
+                    newPath.push(nextNextNode);
+                    queue.enqueue(newPath);
                 }
             }
         }
     }
     
-    return shortest;
-}
-
-void PrintLadder(Stack<nodeT *> ladder) {
-    while (!ladder.isEmpty()) {
-        cout << ladder.pop()->name;
-        if (ladder.size() > 0) {
-            cout << " -> ";
-        }
-    }
-    cout << endl;
+    return Stack<nodeT *>();
 }
 
 int Problem_4_WordLadderGraph_main() {
