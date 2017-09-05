@@ -100,10 +100,18 @@ Stack<nodeT *> FindShortestLaddder(graphT &graph, nodeT *startP, nodeT *endP) {
     return Stack<nodeT *>();
 }
 
+bool containsNode(Stack<nodeT *> path, nodeT *node) {
+    while (!path.isEmpty()) {
+        nodeT *otherNode = path.pop();
+        if (otherNode == node) {
+            return true;
+        }
+    }
+    return false;
+}
+
 Stack<nodeT *> FindLongestLadder(graphT & graph, nodeT *start) {
     Stack<nodeT *> longest;
-    
-    Set<nodeT *> visited;
     
     Stack<Stack<nodeT *>> stack;
     
@@ -113,28 +121,22 @@ Stack<nodeT *> FindLongestLadder(graphT & graph, nodeT *start) {
     
     while (!stack.isEmpty()) {
         Stack<nodeT *> path = stack.pop();
-        //        cout << "Dequeued: ";
-        //        PrintLadder(path);
-        
         nodeT *endPathNode = path.peek();
         
-        if (!visited.contains(endPathNode)) {
-            visited.add(endPathNode);
+        if (path.size() > longest.size()) {
+            longest = path;
+        }
+        
+        Set<arcT *> connected = endPathNode->connected;
+        Set<arcT *>::Iterator arcItr = connected.iterator();
+        while (arcItr.hasNext()) {
+            arcT *arc = arcItr.next();
+            nodeT *nextNextNode = arc->end;
             
-            if (path.size() > longest.size()) {
-                longest = path;
-            }
-            
-            Set<arcT *> connected = endPathNode->connected;
-            Set<arcT *>::Iterator arcItr = connected.iterator();
-            while (arcItr.hasNext()) {
-                arcT *arc = arcItr.next();
-                nodeT *nextNextNode = arc->end;
-                if (!visited.contains(nextNextNode)) {
-                    Stack<nodeT *> newPath = path;
-                    newPath.push(nextNextNode);
-                    stack.push(newPath);
-                }
+            if (!containsNode(path, nextNextNode)) {
+                Stack<nodeT *> newPath = path;
+                newPath.push(nextNextNode);
+                stack.push(newPath);
             }
         }
     }
