@@ -100,6 +100,48 @@ Stack<nodeT *> FindShortestLaddder(graphT &graph, nodeT *startP, nodeT *endP) {
     return Stack<nodeT *>();
 }
 
+Stack<nodeT *> FindLongestLadder(graphT & graph, nodeT *start) {
+    Stack<nodeT *> longest;
+    
+    Set<nodeT *> visited;
+    
+    Stack<Stack<nodeT *>> stack;
+    
+    Stack<nodeT *> initial;
+    initial.push(start);
+    stack.push(initial);
+    
+    while (!stack.isEmpty()) {
+        Stack<nodeT *> path = stack.pop();
+        //        cout << "Dequeued: ";
+        //        PrintLadder(path);
+        
+        nodeT *endPathNode = path.peek();
+        
+        if (!visited.contains(endPathNode)) {
+            visited.add(endPathNode);
+            
+            if (path.size() > longest.size()) {
+                longest = path;
+            }
+            
+            Set<arcT *> connected = endPathNode->connected;
+            Set<arcT *>::Iterator arcItr = connected.iterator();
+            while (arcItr.hasNext()) {
+                arcT *arc = arcItr.next();
+                nodeT *nextNextNode = arc->end;
+                if (!visited.contains(nextNextNode)) {
+                    Stack<nodeT *> newPath = path;
+                    newPath.push(nextNextNode);
+                    stack.push(newPath);
+                }
+            }
+        }
+    }
+    
+    return longest;
+}
+
 int Problem_4_WordLadderGraph_main() {
     Lexicon lex;
     lex.add("cake");
@@ -123,8 +165,12 @@ int Problem_4_WordLadderGraph_main() {
     nodeT *end = findNode(wordGraph, "lime");
     
     Stack<nodeT *> shortest = FindShortestLaddder(wordGraph, start, end);
-    cout << "Shortest ladder: ";
+    cout << "Shortest ladder from " << start->name << " to " << end->name << " : ";
     PrintLadder(shortest);
+    
+    Stack<nodeT *> longest = FindLongestLadder(wordGraph, start);
+    cout << "Longest ladder from " << start->name << ": ";
+    PrintLadder(longest);
     
     return 0;
 }
