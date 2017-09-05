@@ -59,10 +59,7 @@ void PrintLadder(Stack<nodeT *> ladder) {
     cout << endl;
 }
 
-Stack<nodeT *> FindShortestLaddder(graphT &graph, nodeT start, nodeT end) {
-    nodeT *startP = &start;
-    nodeT *endP = &end;
-    
+Stack<nodeT *> FindShortestLaddder(graphT &graph, nodeT *startP, nodeT *endP) {
     Set<nodeT *> visited;
     
     Queue<Stack<nodeT *>> queue;
@@ -81,7 +78,7 @@ Stack<nodeT *> FindShortestLaddder(graphT &graph, nodeT start, nodeT end) {
         if (!visited.contains(endPathNode)) {
             visited.add(endPathNode);
             
-            if (endPathNode->name == endP->name) {
+            if (endPathNode == endP) {
                 return path;
             }
             
@@ -125,7 +122,7 @@ int Problem_4_WordLadderGraph_main() {
     nodeT *start = findNode(wordGraph, "came");
     nodeT *end = findNode(wordGraph, "lime");
     
-    Stack<nodeT *> shortest = FindShortestLaddder(wordGraph, *start, *end);
+    Stack<nodeT *> shortest = FindShortestLaddder(wordGraph, start, end);
     cout << "Shortest ladder: ";
     PrintLadder(shortest);
     
